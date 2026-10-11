@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categoryLabels } from '../data/categories';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+}
+const { article } = Astro.props;
+const { title, description, category, publishedAt } = article.data;
+---
+
+<article class="article-card">
+  <p class="eyebrow">
+    {categoryLabels[category]} <span aria-hidden="true">/</span>{' '}
+    <time datetime={publishedAt.toISOString()}>
+      {publishedAt.toLocaleDateString('en', {
+        dateStyle: 'medium',
+        timeZone: 'UTC',
+      })}
+    </time>
+  </p>
+  <h3>
+    <a href={`/articles/${article.id}/`}>{title}</a>
+  </h3>
+  <p>{description}</p>
+</article>
