@@ -1,7 +1,8 @@
 # Keep the project dependency graph readable by single-document scanners.
-pmOnFail: ignore
+npmOnFail: ignore
 allowBuilds:
   esbuild: true
   workerd: true
 overrides:
+  katex: 0.18.2
   sharp@<0.35.5: ^0.35.5
