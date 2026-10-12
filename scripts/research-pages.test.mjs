@@ -25,7 +25,12 @@ test('each research run has one complete static page and timestamped stories', a
     const authoringTool = raw.match(/^authoringTool: (.+)$/m)?.[1];
     const authoringModel = raw.match(/^authoringModel: (.+)$/m)?.[1];
     const items = reports.get(researchId) ?? [];
-    items.push({ id: name.slice(0, -3), publishedAt, authoringTool, authoringModel });
+    items.push({
+      id: name.slice(0, -3),
+      publishedAt,
+      authoringTool,
+      authoringModel,
+    });
     reports.set(researchId, items);
   }
 
