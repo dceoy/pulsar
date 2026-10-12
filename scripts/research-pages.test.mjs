@@ -35,12 +35,20 @@ test('each research run has one complete static page and timestamped stories', a
       Math.max(...a[1].map((article) => Date.parse(article.publishedAt))),
   )[0][0];
   const home = await readFile('dist/index.html', 'utf8');
+  function assertUniqueHeadingIds(html, page) {
+    const ids = [...html.matchAll(/<h[1-6][^>]*id="([^"]+)"/g)].map(
+      (match) => match[1],
+    );
+    assert.equal(new Set(ids).size, ids.length, `${page} has duplicate heading IDs`);
+  }
+  assertUniqueHeadingIds(home, 'Homepage');
 
   for (const [id, stories] of reports) {
     const report = await readFile(
       join('dist/research', id, 'index.html'),
       'utf8',
     );
+    assertUniqueHeadingIds(report, id);
     for (const story of stories) {
       assert.ok(
         report.includes(`id="${story.id}"`),
