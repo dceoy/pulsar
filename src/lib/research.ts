@@ -35,8 +35,13 @@ export function getResearchReports(articles: Article[]): ResearchReport[] {
 
 export function formatPublishedAt(date: Date): string {
   return `${new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
     timeZone: 'UTC',
   }).format(date)} UTC`;
 }
