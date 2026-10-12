@@ -2,7 +2,10 @@
 title: "Sample: Reading an AI research announcement"
 description: A sample reading guide for separating a research result from claims about its everyday use.
 publishedAt: 2026-10-10
-category: ai
+tags:
+  - ai
+  - technology
+  - AI Research
 ---
 
 This is sample content for the Pulsar scaffold, not a report of a current event.

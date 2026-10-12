@@ -2,7 +2,10 @@
 title: "Sample: A closer look at science news"
 description: A sample guide to checking study design, uncertainty, and the source behind a science headline.
 publishedAt: 2026-10-09
-category: science
+tags:
+  - science
+  - medicine
+  - Clinical Research
 ---
 
 This is sample content for the Pulsar scaffold, not a report of a current event.

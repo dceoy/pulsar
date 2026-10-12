@@ -2,13 +2,14 @@
 import { getCollection } from 'astro:content';
 import ArticleCard from '../components/ArticleCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { categoryLabels, categorySlugs } from '../data/categories';
+import { getTags, tagHref } from '../lib/tags';
 
 const articles = (await getCollection('articles')).sort(
   (a, b) =>
     b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf() ||
     a.id.localeCompare(b.id),
 );
+const tags = getTags(articles);
 ---
 
 <BaseLayout
@@ -41,21 +42,23 @@ const articles = (await getCollection('articles')).sort(
       ))}
     </div>
   </section>
-  <section class="section" aria-labelledby="topics-heading">
-    <div class="section-heading">
-      <h2 id="topics-heading">Follow your curiosity</h2>
-      <p>Nine topics. One wider view.</p>
-    </div>
-    <ul class="category-grid">
-      {categorySlugs.map((category, index) => (
-        <li>
-          <a href={`/categories/${category}/`}>
-            <span class="eyebrow">{String(index + 1).padStart(2, '0')}</span>
-            <span>{categoryLabels[category]}</span>
-            <span aria-hidden="true">↗</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
+  {tags.length > 0 && (
+    <section class="section" aria-labelledby="topics-heading">
+      <div class="section-heading">
+        <h2 id="topics-heading">Explore tags</h2>
+        <p>Topics from published articles</p>
+      </div>
+      <ul class="category-grid">
+        {tags.map((tag, index) => (
+          <li>
+            <a href={tagHref(tag)}>
+              <span class="eyebrow">{String(index + 1).padStart(2, '0')}</span>
+              <span>{tag}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 </BaseLayout>
