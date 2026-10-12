@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import { categoryLabels } from '../../data/categories';
+import { tagHref } from '../../lib/tags';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () =>
@@ -20,7 +20,7 @@ const { title, description, tags, publishedAt } = article.data;
       <p class="eyebrow">
         {tags.map((tag) => (
           <span>
-            <a href={`/categories/${tag}/`}>{categoryLabels[tag]}</a>
+            <a href={tagHref(tag)}>{tag}</a>
             <span class="eyebrow-sep" aria-hidden="true">·</span>
           </span>
         ))}
