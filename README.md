@@ -80,11 +80,11 @@ canonical and Open Graph URLs at build time. The 404 page is marked `noindex`.
 
 Use the `write-article` skill to research, draft, attribute, and validate
 English Markdown articles: `.agents/skills/write-article/SKILL.md`.
-When supported by the agent, invoke `/write-article`. Claude Code uses a
-real `.claude/skills/` directory containing separate symlinks for `local-qa`
-and `write-article` that point to the canonical `.agents/skills/` folders.
-This keeps skill definitions shared without relying on discovery through a
-symlinked directory root.
+When supported by the agent, invoke `/write-article`. The
+`.claude/skills` symlink points to `../.agents/skills`, sharing the same
+skill definitions without duplicating them. Claude Code runtime discovery
+through a symlinked skills root is version-dependent; verify the skill is
+available in your target Claude Code environment.
 
 ## Cloudflare preview and deployment
 
