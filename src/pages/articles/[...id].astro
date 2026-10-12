@@ -19,7 +19,7 @@ const { title, description, tags, publishedAt } = article.data;
     <header class="hero compact">
       <p class="eyebrow">
         {tags.map((tag) => (
-          <span>
+          <span class="tag-labels">
             <a href={tagHref(tag)}>{tag}</a>
             <span class="eyebrow-sep" aria-hidden="true">·</span>
           </span>
