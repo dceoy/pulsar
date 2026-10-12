@@ -11,7 +11,7 @@ const { title, description, tags, publishedAt } = article.data;
 <article class="article-card">
   <p class="eyebrow">
     {tags.length > 0 && (
-      <span>
+      <span class="tag-labels">
         {tags.join(' · ')}
         <span class="eyebrow-sep" aria-hidden="true">·</span>
       </span>
