@@ -1,7 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { categorySlugs } from './data/categories';
 
 const articles = defineCollection({
   loader: glob({ base: './src/content/articles', pattern: '**/*.md' }),
@@ -9,7 +8,12 @@ const articles = defineCollection({
     title: z.string().min(1),
     description: z.string().min(1),
     publishedAt: z.coerce.date(),
-    tags: z.array(z.enum(categorySlugs)).default([]),
+    tags: z
+      .array(z.string().trim().min(1))
+      .default([])
+      .refine((tags) => new Set(tags).size === tags.length, {
+        message: 'Tags must be unique',
+      }),
   }),
 });
 
