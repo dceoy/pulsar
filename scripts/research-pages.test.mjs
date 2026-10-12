@@ -5,12 +5,16 @@ import test from 'node:test';
 
 test('each research run has one complete static page and timestamped stories', async () => {
   const sourceDir = 'src/content/articles';
-  const names = (await readdir(sourceDir)).filter((name) => name.endsWith('.md'));
+  const names = (await readdir(sourceDir)).filter((name) =>
+    name.endsWith('.md'),
+  );
   const reports = new Map();
 
   for (const name of names) {
     const raw = await readFile(join(sourceDir, name), 'utf8');
-    const researchId = raw.match(/^researchId: ([a-z0-9]+(?:-[a-z0-9]+)*)$/m)?.[1];
+    const researchId = raw.match(
+      /^researchId: ([a-z0-9]+(?:-[a-z0-9]+)*)$/m,
+    )?.[1];
     const publishedAt = raw.match(/^publishedAt: ['"]([^'"]+)['"]$/m)?.[1];
     assert.ok(researchId, `${name} needs a researchId`);
     assert.match(
@@ -25,25 +29,34 @@ test('each research run has one complete static page and timestamped stories', a
 
   if (reports.size === 0) return;
 
-  const newest = [...reports].sort((a, b) =>
-    Math.max(...b[1].map((article) => Date.parse(article.publishedAt))) -
-    Math.max(...a[1].map((article) => Date.parse(article.publishedAt))),
+  const newest = [...reports].sort(
+    (a, b) =>
+      Math.max(...b[1].map((article) => Date.parse(article.publishedAt))) -
+      Math.max(...a[1].map((article) => Date.parse(article.publishedAt))),
   )[0][0];
   const home = await readFile('dist/index.html', 'utf8');
 
   for (const [id, stories] of reports) {
-    const report = await readFile(join('dist/research', id, 'index.html'), 'utf8');
+    const report = await readFile(
+      join('dist/research', id, 'index.html'),
+      'utf8',
+    );
     for (const story of stories) {
       assert.ok(
         report.includes(`id="${story.id}"`),
         `Research ${id} is missing the body for ${story.id}`,
       );
       assert.ok(
-        report.includes(`datetime="${new Date(story.publishedAt).toISOString()}"`),
+        report.includes(
+          `datetime="${new Date(story.publishedAt).toISOString()}"`,
+        ),
         `Research ${id} is missing the exact posting time for ${story.id}`,
       );
       if (id === newest) {
-        assert.ok(home.includes(`id="${story.id}"`), `Homepage missing ${story.id}`);
+        assert.ok(
+          home.includes(`id="${story.id}"`),
+          `Homepage missing ${story.id}`,
+        );
       }
     }
   }
