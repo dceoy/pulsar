@@ -3,9 +3,8 @@
 News intelligence across science, technology, business, finance, and global affairs.
 
 A content-first website built with Astro 7 and strict TypeScript. Every page is
-generated into `dist/` and hosted by Cloudflare Workers Static Assets. The initial
-reading room contains two clearly labeled Markdown samples and automatically
-created tag pages.
+generated into `dist/` and hosted by Cloudflare Workers Static Assets. The reading room contains sourced Markdown news articles and automatically
+generated tag pages.
 It uses local CSS and system fonts, with no browser JavaScript, SSR, runtime
 database, or news ingestion.
 
@@ -41,7 +40,8 @@ Generated output, dependencies, and local secrets are ignored by Git.
 ## Content and canonical URLs
 
 Add Markdown files to `src/content/articles/`. Their paths determine article IDs:
-`reading-ai-research.md` becomes `/articles/reading-ai-research/`. The typed schema
+`microsoft-maia-300-ai-inference.md` becomes
+`/articles/microsoft-maia-300-ai-inference/`. The typed schema
 in `src/content.config.ts` requires this frontmatter:
 
 ```yaml
