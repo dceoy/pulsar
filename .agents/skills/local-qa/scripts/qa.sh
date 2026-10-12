@@ -27,12 +27,12 @@ pnpm audit --fix=override
 # Markdown
 pnpm exec prettier --write '**/*.md'
 if [[ -f .markdownlint-cli2.jsonc ]]; then
-  git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t pnpm dlx markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
+  git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t pnpm exec markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
 else
   (
     trap 'rm -f .markdownlint-cli2.jsonc' EXIT
     printf '%s\n' '{"config":{"MD013":false,"MD033":false,"MD041":false}}' > .markdownlint-cli2.jsonc
-    git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t pnpm dlx markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
+    git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t pnpm exec markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
   )
 fi
 
