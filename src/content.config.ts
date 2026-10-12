@@ -10,11 +10,10 @@ const articles = defineCollection({
     publishedAt: z.coerce.date(),
     tags: z
       .array(
-        z
-          .string()
-          .trim()
-          .min(1)
-          .regex(/^[\x20-\x7E]+$/, 'Tags must use printable ASCII only'),
+        z.string().regex(
+          /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+          'Tags must use lowercase kebab-case (a-z, 0-9, single hyphens)',
+        ),
       )
       .default([])
       .refine((tags) => new Set(tags).size === tags.length, {
