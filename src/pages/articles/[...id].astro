@@ -13,7 +13,8 @@ export const getStaticPaths = (async () =>
   }))) satisfies GetStaticPaths;
 const { article } = Astro.props;
 const { Content } = await render(article);
-const { title, description, tags, publishedAt, aiAgent, aiModel } = article.data;
+const { title, description, tags, publishedAt, aiAgent, aiModel } =
+  article.data;
 ---
 
 <BaseLayout
