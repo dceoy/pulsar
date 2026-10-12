@@ -3,6 +3,7 @@
   "name": "pulsar",
   "compatibility_date": "2026-10-01",
   "workers_dev": true,
+  "previews": {},
   "observability": {
     "enabled": true
   },
