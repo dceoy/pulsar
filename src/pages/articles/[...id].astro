@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import { categoryLabels } from '../../data/categories';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths = (async () =>
+  (await getCollection('articles')).map((article) => ({
+    params: { id: article.id },
+    props: { article },
+  }))) satisfies GetStaticPaths;
+const { article } = Astro.props;
+const { Content } = await render(article);
+const { title, description, category, publishedAt } = article.data;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="reading">
+    <header class="hero compact">
+      <p class="eyebrow">
+        <a href={`/categories/${category}/`}>{categoryLabels[category]}</a> /{' '}
+        <time datetime={publishedAt.toISOString()}>
+          {publishedAt.toLocaleDateString('en', {
+            dateStyle: 'long',
+            timeZone: 'UTC',
+          })}
+        </time>
+      </p>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <p class="article-back">
+      <a href={`/categories/${category}/`}>
+        More in {categoryLabels[category]} <span aria-hidden="true">↗</span>
+      </a>
+    </p>
+  </article>
+</BaseLayout>

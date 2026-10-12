@@ -1,0 +1,68 @@
+---
+import { categoryLabels, categorySlugs } from '../data/categories';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Pulsar</title>
+    <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonical} />
+    )}
+    <meta property="og:title" content={`${title} | Pulsar`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {!noindex && <meta property="og:url" content={canonical} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <header class="site-header wrapper">
+      <a class="brand" href="/" aria-label="Pulsar home">
+        <span aria-hidden="true">✳</span> Pulsar
+      </a>
+      <p class="tagline">A wider view. A clearer signal.</p>
+      <nav aria-label="Topics">
+        <ul class="topics">
+          {categorySlugs.map((category) => (
+            <li>
+              <a
+                href={`/categories/${category}/`}
+                aria-current={
+                  Astro.url.pathname === `/categories/${category}/`
+                    ? 'page'
+                    : undefined
+                }
+              >
+                {categoryLabels[category]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="wrapper" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer wrapper">
+      <p>Pulsar · Science, technology, business, and global affairs.</p>
+      <a href="/">Back to home</a>
+    </footer>
+  </body>
+</html>

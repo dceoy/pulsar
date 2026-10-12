@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categoryLabels, categorySlugs } from '../../data/categories';
+
+export const getStaticPaths = (async () => {
+  const articles = (await getCollection('articles')).sort(
+    (a, b) =>
+      b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf() ||
+      a.id.localeCompare(b.id),
+  );
+  return categorySlugs.map((category) => ({
+    params: { category },
+    props: {
+      category,
+      articles: articles.filter(
+        (article) => article.data.category === category,
+      ),
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { category, articles } = Astro.props;
+const label = categoryLabels[category];
+---
+
+<BaseLayout
+  title={label}
+  description={`Explore Pulsar's reading room for ${label.toLowerCase()}.`}
+>
+  <section class="hero compact">
+    <p class="eyebrow">The reading room / Topic</p>
+    <h1>{label}</h1>
+    <p class="lede">
+      Ideas and context from the world of {label.toLowerCase()}.
+    </p>
+  </section>
+  <section class="section" aria-labelledby="articles-heading">
+    <h2 id="articles-heading">Reading in {label}</h2>
+    {articles.length > 0 ? (
+      <div class="article-grid">
+        {articles.map((article) => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    ) : (
+      <p class="empty-state">
+        Our reading room is taking shape. There are no articles in this topic
+        yet. <a href="/">Explore the sample articles</a>.
+      </p>
+    )}
+  </section>
+</BaseLayout>
