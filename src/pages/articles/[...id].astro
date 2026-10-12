@@ -13,17 +13,17 @@ export const getStaticPaths = (async () =>
   }))) satisfies GetStaticPaths;
 const { article } = Astro.props;
 const { Content } = await render(article);
-const { title, description, tags, publishedAt, aiAgent, aiModel } =
+const { title, description, tags, publishedAt, authoringTool, authoringModel } =
   article.data;
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  aiAgent={aiAgent}
-  aiModel={aiModel}
+  authoringTool={authoringTool}
+  authoringModel={authoringModel}
 >
-  <article class="reading" data-ai-agent={aiAgent} data-ai-model={aiModel}>
+  <article class="reading" data-authoring-tool={authoringTool} data-authoring-model={authoringModel}>
     <header class="hero compact">
       <p class="eyebrow">
         {tags.map((tag) => (
@@ -38,7 +38,7 @@ const { title, description, tags, publishedAt, aiAgent, aiModel } =
       </p>
       <h1>{title}</h1>
       <p class="lede">{description}</p>
-      <ArticleProvenance aiAgent={aiAgent} aiModel={aiModel} />
+      <ArticleProvenance authoringTool={authoringTool} authoringModel={authoringModel} />
     </header>
     <div class="prose">
       <Content />

@@ -42,8 +42,9 @@ without following links to individual stories.
   list of distinct lowercase kebab-case values matching
   `^[a-z0-9]+(?:-[a-z0-9]+)*$`. Choose tags freely for each article;
   do not rely on a fixed list. Omit unnecessary YAML quotes.
-- Record AI provenance in optional `aiAgent` (the writing interface or agent,
-  e.g. `ChatGPT`) and `aiModel` (the exact model label reported by the tool,
+- Record AI provenance in optional `authoringTool` (the application or agent
+  used to author the article, e.g. `ChatGPT` or `Claude Code`) and
+  `authoringModel` (the exact model label reported by that tool,
   e.g. `GPT-6-high`) fields. Include each field only when independently known
   from the actual writing environment. Do not infer an exact model from the
   chat client, user subscription, or product name; do not invent metadata to

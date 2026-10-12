@@ -1,17 +1,17 @@
 ---
 interface Props {
-  aiAgent?: string;
-  aiModel?: string;
+  authoringTool?: string;
+  authoringModel?: string;
 }
 
-const { aiAgent, aiModel } = Astro.props;
+const { authoringTool, authoringModel } = Astro.props;
 ---
 
-{(aiAgent || aiModel) && (
+{(authoringTool || authoringModel) && (
   <p class="ai-provenance">
     AI provenance:
-    {aiAgent && <span> Agent: {aiAgent}</span>}
-    {aiAgent && aiModel && <span aria-hidden="true"> · </span>}
-    {aiModel && <span>Model: {aiModel}</span>}
+    {authoringTool && <span> Tool: {authoringTool}</span>}
+    {authoringTool && authoringModel && <span aria-hidden="true"> · </span>}
+    {authoringModel && <span>Model: {authoringModel}</span>}
   </p>
 )}

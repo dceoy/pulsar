@@ -41,8 +41,8 @@ const rendered = await Promise.all(
     <article
       id={article.id}
       class="reading research-item"
-      data-ai-agent={article.data.aiAgent}
-      data-ai-model={article.data.aiModel}
+      data-authoring-tool={article.data.authoringTool}
+      data-authoring-model={article.data.authoringModel}
     >
       <header class="research-item-heading">
         <p class="eyebrow">
@@ -57,8 +57,8 @@ const rendered = await Promise.all(
         <h2>{article.data.title}</h2>
         <p class="lede">{article.data.description}</p>
         <ArticleProvenance
-          aiAgent={article.data.aiAgent}
-          aiModel={article.data.aiModel}
+          authoringTool={article.data.authoringTool}
+          authoringModel={article.data.authoringModel}
         />
       </header>
       <div class="prose">

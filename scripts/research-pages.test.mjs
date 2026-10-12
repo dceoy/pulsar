@@ -22,10 +22,10 @@ test('each research run has one complete static page and timestamped stories', a
       /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/,
       `${name} needs a quoted, timezone-aware publication timestamp`,
     );
-    const aiAgent = raw.match(/^aiAgent: (.+)$/m)?.[1];
-    const aiModel = raw.match(/^aiModel: (.+)$/m)?.[1];
+    const authoringTool = raw.match(/^authoringTool: (.+)$/m)?.[1];
+    const authoringModel = raw.match(/^authoringModel: (.+)$/m)?.[1];
     const items = reports.get(researchId) ?? [];
-    items.push({ id: name.slice(0, -3), publishedAt, aiAgent, aiModel });
+    items.push({ id: name.slice(0, -3), publishedAt, authoringTool, authoringModel });
     reports.set(researchId, items);
   }
 
@@ -67,8 +67,8 @@ test('each research run has one complete static page and timestamped stories', a
         `Research ${id} is missing the exact posting time for ${story.id}`,
       );
       for (const [field, value] of [
-        ['ai-agent', story.aiAgent],
-        ['ai-model', story.aiModel],
+        ['authoring-tool', story.authoringTool],
+        ['authoring-model', story.authoringModel],
       ]) {
         if (value) {
           assert.ok(
