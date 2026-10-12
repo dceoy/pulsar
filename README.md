@@ -50,19 +50,20 @@ description: A short summary for listings and metadata.
 publishedAt: 2026-10-11
 tags:
   - technology
-  - "AI Research"
-  - "医療・科学"
+  - AI Research
+  - Clinical Research
 ```
 
-Article authors (including writing agents) choose any nonempty tag strings;
-there is no platform tag list or fixed taxonomy. `tags` is optional (defaults
-to `[]`) and cannot contain duplicates. Leading/trailing whitespace is removed;
-spelling and case otherwise stay as authored, so agents should use consistent
-names across articles. Tag pages and navigation are generated only for tags
-present in the published articles. The existing `/categories/<tag>/` URLs
-remain for simple lowercase ASCII tags; other tag names get a collision-free,
-URL-safe encoded segment automatically. Each article may appear on multiple
-tag pages. Articles are listed newest first. Rebuild after changing content.
+Article authors (including writing agents) choose any nonempty printable ASCII
+tag strings; there is no platform tag list or fixed taxonomy. `tags` is optional
+(defaults to `[]`) and cannot contain duplicates. Leading/trailing whitespace is
+removed; spelling and case otherwise stay as authored, so agents should use
+consistent names across articles. Plain YAML scalars need no quotes unless the
+tag contains YAML syntax requiring them. Tag pages and navigation are generated
+only for tags present in the articles. The existing `/categories/<tag>/` URLs
+remain for lowercase ASCII slugs; other ASCII tag names use a collision-free
+encoded path segment. Each article may appear on multiple tag pages. Articles
+are listed newest first. Rebuild after changing content.
 
 Set `SITE_URL` to the public HTTP(S) origin when building or deploying:
 
