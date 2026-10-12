@@ -47,13 +47,18 @@ in `src/content.config.ts` requires this frontmatter:
 title: A descriptive article title
 description: A short summary for listings and metadata.
 publishedAt: 2026-10-11
-category: technology
+tags:
+  - technology
+  - ai
 ```
 
-Allowed categories are `ai`, `security`, `technology`, `science`, `medicine`,
+Allowed tags are `ai`, `security`, `technology`, `science`, `medicine`,
 `startup-business`, `finance`, `economics`, and `politics`. The shared registry is
-`src/data/categories.ts`. All category routes are built, including empty topics;
-articles are listed newest first. Rebuild after changing content.
+`src/data/categories.ts`. Articles may have multiple tags; `tags` defaults to an
+empty array if omitted. All existing `/categories/<tag>/` routes are retained
+and list articles with the corresponding tag (including articles appearing in
+multiple categories). Articles are listed newest first. Rebuild after changing
+content.
 
 Set `SITE_URL` to the public HTTP(S) origin when building or deploying:
 
