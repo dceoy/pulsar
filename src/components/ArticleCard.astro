@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { formatPublishedAt } from '../lib/research';
 
 interface Props {
   article: CollectionEntry<'articles'>;
@@ -17,10 +18,7 @@ const { title, description, tags, publishedAt } = article.data;
       </span>
     )}
     <time datetime={publishedAt.toISOString()}>
-      {publishedAt.toLocaleDateString('en', {
-        dateStyle: 'medium',
-        timeZone: 'UTC',
-      })}
+      {formatPublishedAt(publishedAt)}
     </time>
   </p>
   <h3>

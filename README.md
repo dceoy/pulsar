@@ -3,8 +3,8 @@
 News intelligence across science, technology, business, finance, and global affairs.
 
 A content-first website built with Astro 7 and strict TypeScript. Every page is
-generated into `dist/` and hosted by Cloudflare Workers Static Assets. The reading room contains sourced Markdown news articles and automatically
-generated tag pages.
+generated into `dist/` and hosted by Cloudflare Workers Static Assets. Each research run is presented in one complete HTML page, with sourced Markdown
+news articles and automatically generated tag pages.
 It uses local CSS and system fonts, with no browser JavaScript, SSR, runtime
 database, or news ingestion.
 
@@ -26,6 +26,7 @@ pnpm format:check
 pnpm lint
 pnpm check
 pnpm build
+pnpm test:research
 pnpm preview
 ```
 
@@ -47,12 +48,27 @@ in `src/content.config.ts` requires this frontmatter:
 ```yaml
 title: A descriptive article title
 description: A short summary for listings and metadata.
-publishedAt: 2026-10-11
+publishedAt: '2026-10-12T15:07:08Z'
+researchId: 2026-10-12-news
 tags:
   - technology
   - ai-research
   - clinical-research
 ```
+
+Every publication must specify a real ISO 8601 timestamp including time and
+explicit UTC offset or `Z`, quoted in YAML to prevent automatic date coercion.
+Date-only values and missing or unzoned timestamps fail the schema at build time.
+Do not fabricate missing historical publication times; the existing October 12
+articles use their initial GitHub publication merge timestamp as a documented
+proxy (2026-10-12 15:07:08 UTC), not as a claimed research observation time.
+
+A single research run uses one unique `researchId` across all its articles.
+The latest complete report (including article bodies, analysis, and sources)
+is server-rendered at `/` for one-URL AI notebook ingestion. Each run also
+has a stable `/research/<researchId>/` URL. Individual article permalinks
+remain available for direct linking; tag pages link to individual stories.
+The `test:research` smoke test verifies rendered report pages after `build`.
 
 Article authors (including writing agents) choose arbitrary lowercase kebab-case
 tags (`^[a-z0-9]+(?:-[a-z0-9]+)*$`); there is no platform tag list or fixed
@@ -63,7 +79,8 @@ normalized. `tags` is optional (defaults to `[]`) and cannot contain duplicates.
 Plain YAML scalars need no quotes unless YAML syntax requires them. Tag pages
 and navigation are generated only for tags present in articles, using the tag
 directly in `/categories/<tag>/` routes. Each article may appear on multiple tag
-pages. Articles are listed newest first. Rebuild after changing content.
+pages. Research reports and articles are ordered by the full publication instant.
+Rebuild after changing content.
 
 Set `SITE_URL` to the public HTTP(S) origin when building or deploying:
 

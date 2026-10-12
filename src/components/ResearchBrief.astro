@@ -1,0 +1,59 @@
+---
+import { render } from 'astro:content';
+import type { ResearchReport } from '../lib/research';
+import { formatPublishedAt } from '../lib/research';
+import { tagHref } from '../lib/tags';
+
+interface Props {
+  report: ResearchReport;
+}
+
+const { report } = Astro.props;
+const rendered = await Promise.all(
+  report.articles.map(async (article) => ({
+    article,
+    Content: (await render(article)).Content,
+  })),
+);
+---
+
+<section class="research-brief" aria-label="Research briefing">
+  <header class="hero compact">
+    <p class="eyebrow">Pulsar / Research briefing</p>
+    <h1>
+      {report.articles.length === 1
+        ? report.articles[0].data.title
+        : 'Research briefing'}
+    </h1>
+    <p class="lede">
+      {report.articles.length} {report.articles.length === 1 ? 'story' : 'stories'}
+      from one research run, with complete reporting, analysis, and sources on this page.
+    </p>
+    <p class="research-timestamp">
+      Latest publication:
+      <time datetime={report.publishedAt.toISOString()}>
+        {formatPublishedAt(report.publishedAt)}
+      </time>
+    </p>
+  </header>
+  {rendered.map(({ article, Content }) => (
+    <article id={article.id} class="reading research-item">
+      <header class="research-item-heading">
+        <p class="eyebrow">
+          <span>Published</span>
+          <time datetime={article.data.publishedAt.toISOString()}>
+            {formatPublishedAt(article.data.publishedAt)}
+          </time>
+          {article.data.tags.map((tag) => (
+            <a href={tagHref(tag)}>{tag}</a>
+          ))}
+        </p>
+        <h2>{article.data.title}</h2>
+        <p class="lede">{article.data.description}</p>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  ))}
+</section>

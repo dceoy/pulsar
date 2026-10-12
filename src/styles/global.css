@@ -561,3 +561,56 @@ h2 {
     transition: none !important;
   }
 }
+
+/* A research run is one complete notebook-readable page. */
+.research-brief > .hero {
+  max-width: 740px;
+  margin-inline: auto;
+}
+.research-timestamp,
+.research-permalink {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.research-timestamp time {
+  color: var(--text);
+  margin-left: 0.35rem;
+}
+.research-permalink {
+  max-width: 740px;
+  margin: 1rem auto 0;
+}
+.research-permalink a {
+  color: var(--accent);
+}
+.research-item {
+  padding-block: 3rem;
+  border-top: 1px solid var(--line-strong);
+  scroll-margin-top: 7rem;
+}
+.research-item-heading {
+  margin-bottom: 2.25rem;
+}
+.research-item-heading h2 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+.research-item-heading .eyebrow a {
+  text-transform: none;
+}
+.research-archive {
+  list-style: none;
+  padding: 0;
+}
+.research-archive li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.research-archive time {
+  color: var(--muted);
+}

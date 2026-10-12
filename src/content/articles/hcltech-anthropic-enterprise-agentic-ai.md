@@ -1,7 +1,8 @@
 ---
 title: HCLTech and Anthropic expand enterprise AI partnership with a dedicated business unit
 description: The October 12 agreement combines Claude and Claude Code integration with enterprise deployment, governance and software-product plans.
-publishedAt: 2026-10-12
+publishedAt: '2026-10-12T15:07:08Z'
+researchId: 2026-10-12-news
 tags:
   - artificial-intelligence
   - enterprise-software

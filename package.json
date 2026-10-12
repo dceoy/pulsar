@@ -19,7 +19,8 @@
     "lint": "oxlint . --deny-warnings && biome lint .",
     "lint:fix": "oxlint . --fix && biome lint --write .",
     "lint:markdown": "node scripts/markdownlint.mjs",
-    "test:markdownlint": "node --test scripts/markdownlint.test.mjs"
+    "test:markdownlint": "node --test scripts/markdownlint.test.mjs",
+    "test:research": "node --test scripts/research-pages.test.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.1",

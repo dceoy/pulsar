@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import { tagHref } from '../../lib/tags';
+import { formatPublishedAt } from '../../lib/research';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () =>
@@ -25,10 +26,7 @@ const { title, description, tags, publishedAt } = article.data;
           </span>
         ))}
         <time datetime={publishedAt.toISOString()}>
-          {publishedAt.toLocaleDateString('en', {
-            dateStyle: 'long',
-            timeZone: 'UTC',
-          })}
+          {formatPublishedAt(publishedAt)}
         </time>
       </p>
       <h1>{title}</h1>
@@ -38,7 +36,7 @@ const { title, description, tags, publishedAt } = article.data;
       <Content />
     </div>
     <p class="article-back">
-      <a href="/">Back to latest reading <span aria-hidden="true">↗</span></a>
+      <a href="/">Back to latest research <span aria-hidden="true">↗</span></a>
     </p>
   </article>
 </BaseLayout>

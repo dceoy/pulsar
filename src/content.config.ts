@@ -7,7 +7,14 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string().min(1),
     description: z.string().min(1),
-    publishedAt: z.coerce.date(),
+    // Quoted, timezone-aware ISO 8601 is required; date-only YAML scalars are invalid.
+    publishedAt: z
+      .string()
+      .datetime({ offset: true })
+      .transform((value) => new Date(value)),
+    researchId: z
+      .string()
+      .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use a kebab-case research ID'),
     tags: z
       .array(
         z

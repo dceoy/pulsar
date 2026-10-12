@@ -1,7 +1,8 @@
 ---
 title: Microsoft unveils Maia 300 and plans gigawatt-scale AI inference deployments
 description: Microsoft plans to deploy its Maia 300 accelerator in 2027, with ambitious efficiency and throughput claims for its own AI services.
-publishedAt: 2026-10-12
+publishedAt: '2026-10-12T15:07:08Z'
+researchId: 2026-10-12-news
 tags:
   - artificial-intelligence
   - semiconductors
