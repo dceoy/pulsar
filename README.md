@@ -48,7 +48,7 @@ in `src/content.config.ts` requires this frontmatter:
 ```yaml
 title: A descriptive article title
 description: A short summary for listings and metadata.
-publishedAt: '2026-10-12T15:07:08Z'
+publishedAt: "2026-10-12T15:07:08Z"
 researchId: 2026-10-12-news
 tags:
   - technology
