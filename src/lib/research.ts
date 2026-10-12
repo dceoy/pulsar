@@ -17,18 +17,20 @@ export function getResearchReports(articles: Article[]): ResearchReport[] {
     groups.set(article.data.researchId, group);
   }
 
-  return [...groups].map(([id, items]) => {
-    items.sort(
+  return [...groups]
+    .map(([id, items]) => {
+      items.sort(
+        (a, b) =>
+          b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf() ||
+          a.id.localeCompare(b.id),
+      );
+      return { id, publishedAt: items[0].data.publishedAt, articles: items };
+    })
+    .sort(
       (a, b) =>
-        b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf() ||
+        b.publishedAt.valueOf() - a.publishedAt.valueOf() ||
         a.id.localeCompare(b.id),
     );
-    return { id, publishedAt: items[0].data.publishedAt, articles: items };
-  }).sort(
-    (a, b) =>
-      b.publishedAt.valueOf() - a.publishedAt.valueOf() ||
-      a.id.localeCompare(b.id),
-  );
 }
 
 export function formatPublishedAt(date: Date): string {
