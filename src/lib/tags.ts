@@ -1,4 +1,3 @@
-import { Buffer } from 'node:buffer';
 import type { CollectionEntry } from 'astro:content';
 
 export function getTags(articles: CollectionEntry<'articles'>[]): string[] {
@@ -10,7 +9,9 @@ export function getTags(articles: CollectionEntry<'articles'>[]): string[] {
 export function tagSlug(tag: string): string {
   return /^[a-z0-9-]+$/.test(tag)
     ? tag
-    : `~${Buffer.from(tag, 'utf8').toString('base64url')}`;
+    : `~${Array.from(new TextEncoder().encode(tag), (byte) =>
+        byte.toString(16).padStart(2, '0'),
+      ).join('')}`;
 }
 
 export function tagHref(tag: string): string {
