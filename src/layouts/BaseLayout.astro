@@ -10,12 +10,7 @@ interface Props {
   author?: string;
 }
 
-const {
-  title,
-  description,
-  noindex = false,
-  author,
-} = Astro.props;
+const { title, description, noindex = false, author } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const tags = getTags(await getCollection('articles'));
 ---
