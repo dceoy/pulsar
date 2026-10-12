@@ -9,7 +9,13 @@ const articles = defineCollection({
     description: z.string().min(1),
     publishedAt: z.coerce.date(),
     tags: z
-      .array(z.string().trim().min(1).regex(/^[\x20-\x7E]+$/, 'Tags must use printable ASCII only'))
+      .array(
+        z
+          .string()
+          .trim()
+          .min(1)
+          .regex(/^[\x20-\x7E]+$/, 'Tags must use printable ASCII only'),
+      )
       .default([])
       .refine((tags) => new Set(tags).size === tags.length, {
         message: 'Tags must be unique',
