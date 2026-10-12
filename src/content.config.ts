@@ -9,7 +9,7 @@ const articles = defineCollection({
     title: z.string().min(1),
     description: z.string().min(1),
     publishedAt: z.coerce.date(),
-    category: z.enum(categorySlugs),
+    tags: z.array(z.enum(categorySlugs)).default([]),
   }),
 });
 
