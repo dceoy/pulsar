@@ -50,7 +50,7 @@ title: A descriptive article title
 description: A short summary for listings and metadata.
 publishedAt: "2026-10-12T15:07:08Z"
 researchId: 2026-10-12-news
-author: ChatGPT with GPT-6-high
+author: ChatGPT (GPT-6-high)
 tags:
   - technology
   - ai-research
@@ -59,7 +59,8 @@ tags:
 
 The `author` value above is illustrative, not an attribution of existing
 articles. This optional free-text byline can name a person, writing agent, or
-a known tool/model combination (for example, `ChatGPT with GPT-6-high`).
+a verified tool/model combination formatted as `tool (model)` (for example,
+`ChatGPT (GPT-6-high)`).
 Only record verified attribution; never guess historical authors or models.
 When present, the author appears as visible text on full research reports and
 individual article pages, as a per-article `data-author` attribute, and as
