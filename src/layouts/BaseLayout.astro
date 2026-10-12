@@ -1,5 +1,6 @@
 ---
-import { categoryLabels, categorySlugs } from '../data/categories';
+import { getCollection } from 'astro:content';
+import { getTags, tagHref } from '../lib/tags';
 import '../styles/global.css';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 
 const { title, description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const tags = getTags(await getCollection('articles'));
 ---
 
 <!doctype html>
@@ -42,17 +44,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         </a>
         <nav aria-label="Topics">
           <ul class="topics">
-            {categorySlugs.map((category) => (
+            {tags.map((tag) => (
               <li>
                 <a
-                  href={`/categories/${category}/`}
-                  aria-current={
-                    Astro.url.pathname === `/categories/${category}/`
-                      ? 'page'
-                      : undefined
-                  }
+                  href={tagHref(tag)}
+                  aria-current={Astro.url.pathname === tagHref(tag) ? 'page' : undefined}
                 >
-                  {categoryLabels[category]}
+                  {tag}
                 </a>
               </li>
             ))}
