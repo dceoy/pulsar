@@ -1,0 +1,36 @@
+---
+name: Toolchain migration bootstrap
+on:
+  push:
+    branches:
+      - chore/biome-oxlint
+permissions:
+  contents: write
+jobs:
+  generate-lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+      - uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3
+        with:
+          version: 12.10.1
+          runtime: node@24.16.0
+          install: false
+      - name: Update lockfile and migrate formatting
+        env:
+          NPM_CONFIG_MINIMUM_RELEASE_AGE: '10080'
+          PNPM_CONFIG_MINIMUM_RELEASE_AGE: '10080'
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm run format
+          pnpm exec oxlint . --fix
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git add pnpm-lock.yaml
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: refresh lockfile and format with Biome'
+            git push origin HEAD:refs/heads/chore/biome-oxlint
+          fi

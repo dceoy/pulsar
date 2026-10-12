@@ -14,10 +14,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "pnpm build && wrangler deploy",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "oxlint . --deny-warnings && biome lint .",
+    "lint:fix": "oxlint . --fix && biome lint --write ."
   },
   "dependencies": {
     "astro": "7.3.5",
@@ -25,13 +25,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "@eslint/js": "10.0.1",
-    "eslint": "10.12.0",
-    "eslint-plugin-astro": "3.2.1",
-    "prettier": "3.9.9",
-    "prettier-plugin-astro": "1.1.0",
+    "@biomejs/biome": "2.5.14",
+    "oxlint": "1.79.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.0",
     "wrangler": "4.147.0"
   }
 }
