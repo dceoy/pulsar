@@ -4,7 +4,8 @@ News intelligence across science, technology, business, finance, and global affa
 
 A content-first website built with Astro 7 and strict TypeScript. Every page is
 generated into `dist/` and hosted by Cloudflare Workers Static Assets. The initial
-reading room contains two clearly labeled Markdown samples and nine topic pages.
+reading room contains two clearly labeled Markdown samples and automatically
+created tag pages.
 It uses local CSS and system fonts, with no browser JavaScript, SSR, runtime
 database, or news ingestion.
 
@@ -49,16 +50,19 @@ description: A short summary for listings and metadata.
 publishedAt: 2026-10-11
 tags:
   - technology
-  - ai
+  - 'AI Research'
+  - '医療・科学'
 ```
 
-Allowed tags are `ai`, `security`, `technology`, `science`, `medicine`,
-`startup-business`, `finance`, `economics`, and `politics`. The shared registry is
-`src/data/categories.ts`. Articles may have multiple tags; `tags` defaults to an
-empty array if omitted. All existing `/categories/<tag>/` routes are retained
-and list articles with the corresponding tag (including articles appearing in
-multiple categories). Articles are listed newest first. Rebuild after changing
-content.
+Article authors (including writing agents) choose any nonempty tag strings;
+there is no platform tag list or fixed taxonomy. `tags` is optional (defaults
+to `[]`) and cannot contain duplicates. Leading/trailing whitespace is removed;
+spelling and case otherwise stay as authored, so agents should use consistent
+names across articles. Tag pages and navigation are generated only for tags
+present in the published articles. The existing `/categories/<tag>/` URLs
+remain for simple lowercase ASCII tags; other tag names get a collision-free,
+URL-safe encoded segment automatically. Each article may appear on multiple
+tag pages. Articles are listed newest first. Rebuild after changing content.
 
 Set `SITE_URL` to the public HTTP(S) origin when building or deploying:
 
