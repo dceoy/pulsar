@@ -17,6 +17,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#07090e" />
     <title>{title} | Pulsar</title>
     <meta name="description" content={description} />
     {noindex ? (
@@ -33,36 +35,39 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <a class="skip-link" href="#main">
       Skip to content
     </a>
-    <header class="site-header wrapper">
-      <a class="brand" href="/" aria-label="Pulsar home">
-        <span aria-hidden="true">✳</span> Pulsar
-      </a>
-      <p class="tagline">A wider view. A clearer signal.</p>
-      <nav aria-label="Topics">
-        <ul class="topics">
-          {categorySlugs.map((category) => (
-            <li>
-              <a
-                href={`/categories/${category}/`}
-                aria-current={
-                  Astro.url.pathname === `/categories/${category}/`
-                    ? 'page'
-                    : undefined
-                }
-              >
-                {categoryLabels[category]}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <header class="site-header">
+      <div class="site-header-inner wrapper">
+        <a class="brand" href="/" aria-label="Pulsar home">
+          <span class="brand-mark" aria-hidden="true"></span> Pulsar
+        </a>
+        <nav aria-label="Topics">
+          <ul class="topics">
+            {categorySlugs.map((category) => (
+              <li>
+                <a
+                  href={`/categories/${category}/`}
+                  aria-current={
+                    Astro.url.pathname === `/categories/${category}/`
+                      ? 'page'
+                      : undefined
+                  }
+                >
+                  {categoryLabels[category]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
     <main id="main" class="wrapper" tabindex="-1">
       <slot />
     </main>
-    <footer class="site-footer wrapper">
-      <p>Pulsar · Science, technology, business, and global affairs.</p>
-      <a href="/">Back to home</a>
+    <footer class="site-footer">
+      <div class="site-footer-inner wrapper">
+        <p>Pulsar · A wider view. A clearer signal.</p>
+        <a href="/">Back to home</a>
+      </div>
     </footer>
   </body>
 </html>

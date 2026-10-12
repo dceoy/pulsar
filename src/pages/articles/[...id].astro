@@ -18,7 +18,8 @@ const { title, description, category, publishedAt } = article.data;
   <article class="reading">
     <header class="hero compact">
       <p class="eyebrow">
-        <a href={`/categories/${category}/`}>{categoryLabels[category]}</a> /{' '}
+        <a href={`/categories/${category}/`}>{categoryLabels[category]}</a>
+        <span class="eyebrow-sep" aria-hidden="true">·</span>
         <time datetime={publishedAt.toISOString()}>
           {publishedAt.toLocaleDateString('en', {
             dateStyle: 'long',
