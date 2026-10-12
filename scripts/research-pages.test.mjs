@@ -39,7 +39,11 @@ test('each research run has one complete static page and timestamped stories', a
     const ids = [...html.matchAll(/<h[1-6][^>]*id="([^"]+)"/g)].map(
       (match) => match[1],
     );
-    assert.equal(new Set(ids).size, ids.length, `${page} has duplicate heading IDs`);
+    assert.equal(
+      new Set(ids).size,
+      ids.length,
+      `${page} has duplicate heading IDs`,
+    );
   }
   assertUniqueHeadingIds(home, 'Homepage');
 
