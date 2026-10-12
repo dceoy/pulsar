@@ -50,23 +50,22 @@ title: A descriptive article title
 description: A short summary for listings and metadata.
 publishedAt: "2026-10-12T15:07:08Z"
 researchId: 2026-10-12-news
-authoringTool: ChatGPT
-authoringModel: GPT-6-high
+author: ChatGPT with GPT-6-high
 tags:
   - technology
   - ai-research
   - clinical-research
 ```
 
-The `authoringTool` and `authoringModel` example values above are illustrative, not
-claims about existing articles. Both are optional free-text fields: `authoringTool`
-records the application or agent used for writing; `authoringModel` records its reported model
-identifier or full model/effort label. Only record verified provenance; never
-infer it for earlier articles. When present, provenance appears in article text,
-per-article HTML `data-authoring-tool`/`data-authoring-model` attributes on full research
-reports and article pages, and `pulsar:authoring-tool`/`pulsar:authoring-model` meta tags
-on individual article pages. Visible text is intentional: AI notebook readers
-may ignore head metadata or follow no links.
+The `author` value above is illustrative, not an attribution of existing
+articles. This optional free-text byline can name a person, writing agent, or
+a known tool/model combination (for example, `ChatGPT with GPT-6-high`).
+Only record verified attribution; never guess historical authors or models.
+When present, the author appears as visible text on full research reports and
+individual article pages, as a per-article `data-author` attribute, and as
+the standard `<meta name="author">` tag on individual article pages.
+Visible text is intentional: AI notebook readers may ignore head metadata
+or follow no links.
 
 Every publication must specify a real ISO 8601 timestamp including time and
 explicit UTC offset or `Z`, quoted in YAML to prevent automatic date coercion.

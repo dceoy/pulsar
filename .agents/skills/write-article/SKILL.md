@@ -42,15 +42,13 @@ without following links to individual stories.
   list of distinct lowercase kebab-case values matching
   `^[a-z0-9]+(?:-[a-z0-9]+)*$`. Choose tags freely for each article;
   do not rely on a fixed list. Omit unnecessary YAML quotes.
-- Record AI provenance in optional `authoringTool` (the application or agent
-  used to author the article, e.g. `ChatGPT` or `Claude Code`) and
-  `authoringModel` (the exact model label reported by that tool,
-  e.g. `GPT-6-high`) fields. Include each field only when independently known
-  from the actual writing environment. Do not infer an exact model from the
-  chat client, user subscription, or product name; do not invent metadata to
-  fill a missing value. Preserve the reported model/effort label verbatim.
-  The site presents the provenance as visible text for notebook readers and
-  exposes article-level HTML data attributes and per-article head metadata.
+- Use the optional `author` field for a factual byline. For AI-authored work,
+  record the known writing application/agent and the exact model label reported
+  by that environment, e.g. `author: ChatGPT with GPT-6-high`. Never infer
+  a model or effort level from a chat client or subscription; if the agent,
+  model, or authorship cannot be verified, omit unsupported attribution rather
+  than inventing it. The site renders the byline as visible text for AI
+  notebook readers and as standard HTML author metadata on article pages.
 - The platform aggregates every article with the same `researchId` into
   one complete, server-rendered HTML report at `/research/<researchId>/`.
   The newest report also appears in full at `/`. Verify all stories and
@@ -73,7 +71,7 @@ without following links to individual stories.
 
 1. Check required frontmatter, research run grouping, valid and unique tags,
    **actual timezone-aware publication timestamps**, Markdown links,
-   attribution, accurately declared AI provenance (if known), and whether
+   attribution, accurate author information (if known), and whether
    the article duplicates or contradicts existing
    content.
 2. Run the repository's `local-qa` skill when tooling is available; at minimum

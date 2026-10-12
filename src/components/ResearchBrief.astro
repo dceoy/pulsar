@@ -1,6 +1,6 @@
 ---
 import { render } from 'astro:content';
-import ArticleProvenance from './ArticleProvenance.astro';
+import ArticleByline from './ArticleByline.astro';
 import type { ResearchReport } from '../lib/research';
 import { formatPublishedAt } from '../lib/research';
 import { tagHref } from '../lib/tags';
@@ -41,8 +41,7 @@ const rendered = await Promise.all(
     <article
       id={article.id}
       class="reading research-item"
-      data-authoring-tool={article.data.authoringTool}
-      data-authoring-model={article.data.authoringModel}
+      data-author={article.data.author}
     >
       <header class="research-item-heading">
         <p class="eyebrow">
@@ -56,10 +55,7 @@ const rendered = await Promise.all(
         </p>
         <h2>{article.data.title}</h2>
         <p class="lede">{article.data.description}</p>
-        <ArticleProvenance
-          authoringTool={article.data.authoringTool}
-          authoringModel={article.data.authoringModel}
-        />
+        <ArticleByline author={article.data.author} />
       </header>
       <div class="prose">
         <Content />

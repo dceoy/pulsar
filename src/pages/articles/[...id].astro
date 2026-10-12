@@ -4,7 +4,7 @@ import type { GetStaticPaths } from 'astro';
 import { tagHref } from '../../lib/tags';
 import { formatPublishedAt } from '../../lib/research';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ArticleProvenance from '../../components/ArticleProvenance.astro';
+import ArticleByline from '../../components/ArticleByline.astro';
 
 export const getStaticPaths = (async () =>
   (await getCollection('articles')).map((article) => ({
@@ -13,17 +13,15 @@ export const getStaticPaths = (async () =>
   }))) satisfies GetStaticPaths;
 const { article } = Astro.props;
 const { Content } = await render(article);
-const { title, description, tags, publishedAt, authoringTool, authoringModel } =
-  article.data;
+const { title, description, tags, publishedAt, author } = article.data;
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  authoringTool={authoringTool}
-  authoringModel={authoringModel}
+  author={author}
 >
-  <article class="reading" data-authoring-tool={authoringTool} data-authoring-model={authoringModel}>
+  <article class="reading" data-author={author}>
     <header class="hero compact">
       <p class="eyebrow">
         {tags.map((tag) => (
@@ -38,7 +36,7 @@ const { title, description, tags, publishedAt, authoringTool, authoringModel } =
       </p>
       <h1>{title}</h1>
       <p class="lede">{description}</p>
-      <ArticleProvenance authoringTool={authoringTool} authoringModel={authoringModel} />
+      <ArticleByline author={author} />
     </header>
     <div class="prose">
       <Content />

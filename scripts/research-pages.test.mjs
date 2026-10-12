@@ -22,14 +22,12 @@ test('each research run has one complete static page and timestamped stories', a
       /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/,
       `${name} needs a quoted, timezone-aware publication timestamp`,
     );
-    const authoringTool = raw.match(/^authoringTool: (.+)$/m)?.[1];
-    const authoringModel = raw.match(/^authoringModel: (.+)$/m)?.[1];
+    const author = raw.match(/^author: (.+)$/m)?.[1];
     const items = reports.get(researchId) ?? [];
     items.push({
       id: name.slice(0, -3),
       publishedAt,
-      authoringTool,
-      authoringModel,
+      author,
     });
     reports.set(researchId, items);
   }
@@ -71,24 +69,23 @@ test('each research run has one complete static page and timestamped stories', a
         ),
         `Research ${id} is missing the exact posting time for ${story.id}`,
       );
-      for (const [field, value] of [
-        ['authoring-tool', story.authoringTool],
-        ['authoring-model', story.authoringModel],
-      ]) {
-        if (value) {
-          assert.ok(
-            report.includes(`data-${field}="${value}"`),
-            `Research ${id} is missing ${field} for ${story.id}`,
-          );
-          const articlePage = await readFile(
-            join('dist/articles', story.id, 'index.html'),
-            'utf8',
-          );
-          assert.ok(
-            articlePage.includes(`name="pulsar:${field}" content="${value}"`),
-            `Article ${story.id} lacks ${field} metadata`,
-          );
-        }
+      if (story.author) {
+        assert.ok(
+          report.includes(`data-author="${story.author}"`),
+          `Research ${id} is missing the author for ${story.id}`,
+        );
+        assert.ok(
+          report.includes(`Author: ${story.author}`),
+          `Research ${id} is missing the visible byline for ${story.id}`,
+        );
+        const articlePage = await readFile(
+          join('dist/articles', story.id, 'index.html'),
+          'utf8',
+        );
+        assert.ok(
+          articlePage.includes(`name="author" content="${story.author}"`),
+          `Article ${story.id} lacks author metadata`,
+        );
       }
       if (id === newest) {
         assert.ok(
