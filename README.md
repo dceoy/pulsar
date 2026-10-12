@@ -76,6 +76,14 @@ your actual Workers URL or custom domain before publishing. Only an origin is
 accepted (no path, query, fragment, or credentials). This setting controls
 canonical and Open Graph URLs at build time. The 404 page is marked `noindex`.
 
+## Agent-assisted article writing
+
+Use the `write-article` skill to research, draft, attribute, and validate
+English Markdown articles: `.agents/skills/write-article/SKILL.md`.
+When supported by the agent, invoke `/write-article`. The
+`.claude/skills` symlink points to `../.agents/skills`, so Claude Code
+and other agents share the same skills without duplicated files.
+
 ## Cloudflare preview and deployment
 
 `wrangler.jsonc` configures `assets.directory: "./dist"` and a custom 404 page.
