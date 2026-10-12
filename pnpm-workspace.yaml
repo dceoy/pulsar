@@ -1,5 +1,5 @@
 # Keep the project dependency graph readable by single-document scanners.
-npmOnFail: ignore
+pmOnFail: ignore
 allowBuilds:
   esbuild: true
   workerd: true
