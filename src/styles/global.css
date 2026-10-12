@@ -166,7 +166,7 @@ nav {
   display: flex;
   gap: 0.25rem;
   list-style: none;
-  padding: 0;
+  padding: 0 2rem 0 0;
   margin: 0;
   overflow-x: auto;
   scrollbar-width: none;
@@ -525,7 +525,7 @@ h2 {
     padding-block: 0.5rem;
   }
   .topics {
-    padding-inline: 0.75rem;
+    padding-inline: 0.75rem 2rem;
   }
 }
 @media (max-width: 640px) {
