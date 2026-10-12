@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { categoryLabels } from '../data/categories';
 
 interface Props {
   article: CollectionEntry<'articles'>;
@@ -13,7 +12,7 @@ const { title, description, tags, publishedAt } = article.data;
   <p class="eyebrow">
     {tags.length > 0 && (
       <span>
-        {tags.map((tag) => categoryLabels[tag]).join(' · ')}
+        {tags.join(' · ')}
         <span class="eyebrow-sep" aria-hidden="true">·</span>
       </span>
     )}
