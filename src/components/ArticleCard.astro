@@ -6,13 +6,17 @@ interface Props {
   article: CollectionEntry<'articles'>;
 }
 const { article } = Astro.props;
-const { title, description, category, publishedAt } = article.data;
+const { title, description, tags, publishedAt } = article.data;
 ---
 
 <article class="article-card">
   <p class="eyebrow">
-    {categoryLabels[category]}
-    <span class="eyebrow-sep" aria-hidden="true">·</span>
+    {tags.length > 0 && (
+      <span>
+        {tags.map((tag) => categoryLabels[tag]).join(' · ')}
+        <span class="eyebrow-sep" aria-hidden="true">·</span>
+      </span>
+    )}
     <time datetime={publishedAt.toISOString()}>
       {publishedAt.toLocaleDateString('en', {
         dateStyle: 'medium',
