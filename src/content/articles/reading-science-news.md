@@ -5,7 +5,7 @@ publishedAt: 2026-10-09
 tags:
   - science
   - medicine
-  - Clinical Research
+  - clinical-research
 ---
 
 This is sample content for the Pulsar scaffold, not a report of a current event.
