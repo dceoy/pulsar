@@ -24,7 +24,7 @@ pnpm run format
 pnpm run lint:fix
 pnpm audit --fix=override
 
-# Markdown (Markdown is outside Biome's supported formatter languages)
+# Markdown lint (Prettier formatting runs through pnpm run format)
 if [[ -f .markdownlint-cli2.jsonc ]]; then
   git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t npx -y markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
 else

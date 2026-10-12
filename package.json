@@ -14,8 +14,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "pnpm build && wrangler deploy",
-    "format": "biome format --write .",
-    "format:check": "biome format .",
+    "format": "biome format --write . && prettier --write \"**/*.{md,mdx}\"",
+    "format:check": "biome format . && prettier --check \"**/*.{md,mdx}\"",
     "lint": "oxlint . --deny-warnings && biome lint .",
     "lint:fix": "oxlint . --fix && biome lint --write ."
   },
@@ -28,6 +28,7 @@
     "@biomejs/biome": "2.5.14",
     "oxlint": "1.79.0",
     "typescript": "6.0.3",
-    "wrangler": "4.147.0"
+    "wrangler": "4.147.0",
+    "prettier": "3.9.9"
   }
 }

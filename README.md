@@ -29,7 +29,8 @@ pnpm build
 pnpm preview
 ```
 
-`pnpm format:check` uses Biome for supported files, including Astro frontmatter.
+`pnpm format:check` uses Biome for supported files, including Astro frontmatter,
+and Prettier only for Markdown (`.md` and `.mdx`).
 Full Astro template formatting is experimental and remains disabled.
 `pnpm lint` uses Oxlint for JS/TS and Biome lint for other supported files.
 `pnpm check` validates TypeScript and Astro templates. `pnpm build` writes
