@@ -50,20 +50,76 @@ description: A short summary for listings and metadata.
 publishedAt: 2026-10-11
 tags:
   - technology
-  - AI Research
-  - Clinical Research
+  - ai-research
+  - clinical-research
 ```
 
-Article authors (including writing agents) choose any nonempty printable ASCII
-tag strings; there is no platform tag list or fixed taxonomy. `tags` is optional
-(defaults to `[]`) and cannot contain duplicates. Leading/trailing whitespace is
-removed; spelling and case otherwise stay as authored, so agents should use
-consistent names across articles. Plain YAML scalars need no quotes unless the
-tag contains YAML syntax requiring them. Tag pages and navigation are generated
-only for tags present in the articles. The existing `/categories/<tag>/` URLs
-remain for lowercase ASCII slugs; other ASCII tag names use a collision-free
-encoded path segment. Each article may appear on multiple tag pages. Articles
-are listed newest first. Rebuild after changing content.
+Article authors (including writing agents) choose arbitrary lowercase kebab-case
+tags (`^[a-z0-9]+(?:-[a-z0-9]+)*# Pulsar
+
+News intelligence across science, technology, business, finance, and global affairs.
+
+A content-first website built with Astro 7 and strict TypeScript. Every page is
+generated into `dist/` and hosted by Cloudflare Workers Static Assets. The initial
+reading room contains two clearly labeled Markdown samples and automatically
+created tag pages.
+It uses local CSS and system fonts, with no browser JavaScript, SSR, runtime
+database, or news ingestion.
+
+## Develop and verify
+
+Use Node.js 24.16.0 or later (Node 24 LTS recommended) and pnpm 12.10.1.
+Install that pnpm version with your preferred package manager, for example
+`npm install --global pnpm@12.10.1` when npm is available.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Open the local URL printed by Astro (normally `http://localhost:4321`).
+
+```sh
+pnpm format:check
+pnpm lint
+pnpm check
+pnpm build
+pnpm preview
+```
+
+`pnpm format:check` uses Biome for supported files, including Astro frontmatter,
+and Prettier only for Markdown (`.md` and `.mdx`).
+Full Astro template formatting is experimental and remains disabled.
+`pnpm lint` uses Oxlint for JS/TS and Biome lint for other supported files.
+`pnpm check` validates TypeScript and Astro templates. `pnpm build` writes
+static pages and CSS to `dist/`, and `pnpm preview` serves the site locally.
+Generated output, dependencies, and local secrets are ignored by Git.
+
+## Content and canonical URLs
+
+Add Markdown files to `src/content/articles/`. Their paths determine article IDs:
+`reading-ai-research.md` becomes `/articles/reading-ai-research/`. The typed schema
+in `src/content.config.ts` requires this frontmatter:
+
+```yaml
+title: A descriptive article title
+description: A short summary for listings and metadata.
+publishedAt: 2026-10-11
+tags:
+  - technology
+  - ai-research
+  - clinical-research
+```
+
+); there is no platform tag list or fixed
+taxonomy. Tags may contain lowercase ASCII letters, digits, and single hyphens
+between groups. Uppercase letters, spaces, other punctuation, leading or trailing
+hyphens, and consecutive hyphens are rejected at build time rather than silently
+normalized. `tags` is optional (defaults to `[]`) and cannot contain duplicates.
+Plain YAML scalars need no quotes unless YAML syntax requires them. Tag pages
+and navigation are generated only for tags present in articles, using the tag
+directly in `/categories/<tag>/` routes. Each article may appear on multiple tag
+pages. Articles are listed newest first. Rebuild after changing content.
 
 Set `SITE_URL` to the public HTTP(S) origin when building or deploying:
 
