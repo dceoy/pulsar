@@ -43,8 +43,10 @@ without following links to individual stories.
   `^[a-z0-9]+(?:-[a-z0-9]+)*$`. Choose tags freely for each article;
   do not rely on a fixed list. Omit unnecessary YAML quotes.
 - Use the optional `author` field for a factual byline. For AI-authored work,
-  record the known writing application/agent and the exact model label reported
-  by that environment, e.g. `author: ChatGPT with GPT-6-high`. Never infer
+  format the byline as `<tool> (<model>)` when both the writing application or
+  agent and the exact reported model label are known, e.g.
+  `author: ChatGPT (GPT-6-high)`. If only the authoring tool is verified,
+  specify just its name. Never infer
   a model or effort level from a chat client or subscription; if the agent,
   model, or authorship cannot be verified, omit unsupported attribution rather
   than inventing it. The site renders the byline as visible text for AI
