@@ -123,6 +123,6 @@ the local `pnpm deploy` command. A future separate deployment job should receive
 deployment step.
 
 Repository-wide local QA is available as
-`bash .agents/skills/local-qa/scripts/qa.sh`; it also needs npm/npx, uv/uvx, and
+`bash .agents/skills/local-qa/scripts/qa.sh`; it also needs pnpm, uv/uvx, and
 actionlint installed. It formats files, fixes lint issues, audits dependencies,
 and scans GitHub Actions configuration. Review its changes before committing.
