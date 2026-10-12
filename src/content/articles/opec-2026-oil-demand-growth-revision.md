@@ -1,6 +1,6 @@
 ---
-title: OPEC says 2026 oil demand growth has slowed to 400000 barrels per day
-description: OPEC's secretary general contrasts weaker 2026 oil demand growth with an anticipated rebound in 2027, highlighting forecast uncertainty.
+title: OPEC chief reiterates 2026 oil demand growth outlook near 400000 barrels per day
+description: The October 12 statement rounded a September forecast of 380000 barrels per day and anticipated a 2027 rebound; it was not a fresh downgrade.
 publishedAt: 2026-10-12
 tags:
   - energy
@@ -9,35 +9,40 @@ tags:
   - commodities
 ---
 
-OPEC Secretary General Haitham Al Ghais said on **October 12, 2026** that
-the organization's forecast for **global oil demand growth in 2026** had
-been reduced to around **400,000 barrels per day**, compared with
-**1.4 million barrels per day at the start of the year**. He attributed
-the revision to market developments during 2026 and said OPEC expects
-some deferred demand to emerge in 2027, according to
-[Reuters' report of his remarks](https://www.reuters.com/business/energy/opec-cuts-2026-oil-demand-growth-forecast-400000-bpd-sees-pent-up-demand-2027-2026-10-12/).
+On **October 12, 2026**, OPEC Secretary General Haitham Al Ghais
+reiterated that global oil demand was expected to grow by around
+**400,000 barrels per day in 2026**, compared with an estimate of
+**1.4 million barrels per day at the start of the year**. This was
+a **rounded restatement**, not a newly announced October downgrade:
+OPEC's [September 10 Monthly Oil Market Report](https://www.opec.org/monthly-oil-market-report.html)
+had already lowered its 2026 demand-growth forecast to
+**380,000 barrels per day**, the fifth consecutive monthly reduction,
+as [Reuters reported at the time](https://www.reuters.com/business/energy/opec-further-lowers-2026-global-oil-demand-growth-forecast-2026-09-10/).
+The October remarks were
+[reported by Reuters](https://www.reuters.com/business/energy/opec-cuts-2026-oil-demand-growth-forecast-400000-bpd-sees-pent-up-demand-2027-2026-10-12/).
 
-The distinction matters: this is a reduction in **expected year-on-year
-growth**, not a statement that total global oil use has fallen by
-400,000 barrels per day. The comparison is with OPEC's **start-of-year**
-projection, rather than a claim that the entire revision occurred on
-October 12.
+These figures concern **forecast year-on-year growth in consumption**,
+not a decline in the total volume of oil consumed. They also describe
+a series of forecast revisions during 2026, rather than a change
+made on October 12.
 
-## What the revision tells us
+## What the revised outlook tells us
 
-The new figure is roughly **one million barrels per day below** the
-growth rate envisaged at the beginning of 2026. It indicates how
-substantially the organization's assessment of the year's consumption
-trajectory has changed. Reuters also
-[reported downward forecast revisions in September](https://www.reuters.com/business/energy/opec-further-lowers-2026-global-oil-demand-growth-forecast-2026-09-10/),
-so the October comparison should be understood in the context of
-successive reassessments over the year.
+The September estimate of 380,000 barrels per day was approximately
+**one million barrels per day below** the start-of-year projection of
+1.4 million barrels per day. It indicates how substantially OPEC's
+assessment of 2026 demand growth changed over the year. The distinction
+between the September 10 publication and the October 12 remarks matters
+because repeating an existing forecast is not an additional change
+in the expected supply-demand balance.
 
-Al Ghais also expressed an expectation that postponed consumption could
-reappear in 2027. That is **OPEC's forecast**, not an observed rebound or
-a guaranteed return to the earlier growth trajectory. The October 12
-remarks, as reported, do not by themselves quantify the expected
-2027 recovery or demonstrate its underlying sector-by-sector drivers.
+Al Ghais also said that some delayed demand could materialize in 2027.
+OPEC had **already raised its 2027 demand-growth projection in its
+September report**, so the October remarks should likewise not be
+presented as a new upward revision. This is OPEC's forecast, not an
+observed rebound or a guaranteed return to the earlier growth trajectory.
+The remarks do not independently establish the scale or timing of
+any demand recovery.
 
 ## Why weaker demand growth does not determine the oil price
 
@@ -67,13 +72,16 @@ flows; and changes in commercial inventories and refinery utilization.
 A durable improvement in physical supply would change the near-term
 balance differently from a headline-only diplomatic announcement.
 
-**Evidence limitation:** The October 12 figure and 2027 expectation
-above are attributed to OPEC's secretary general through Reuters.
-This article does not treat them as independently validated
-consumption measurements.
+**Evidence limitation:** The 380,000-barrel-per-day forecast is
+documented in reporting on OPEC's September monthly publication and
+the report is accessible through OPEC's official report page.
+The October 12 rounded figure and comments on deferred demand
+are attributed to Al Ghais via Reuters; none of these projections
+is an independently validated measure of realized consumption.
 
 ## Sources
 
-- [Reuters: OPEC secretary general's revised 2026 outlook, October 12, 2026](https://www.reuters.com/business/energy/opec-cuts-2026-oil-demand-growth-forecast-400000-bpd-sees-pent-up-demand-2027-2026-10-12/)
-- [Reuters: Previous OPEC forecast revisions, September 10, 2026](https://www.reuters.com/business/energy/opec-further-lowers-2026-global-oil-demand-growth-forecast-2026-09-10/)
+- [OPEC: Monthly Oil Market Report, September 2026](https://www.opec.org/monthly-oil-market-report.html)
+- [Reuters: September 10 forecast revision to 380,000 bpd](https://www.reuters.com/business/energy/opec-further-lowers-2026-global-oil-demand-growth-forecast-2026-09-10/)
+- [Reuters: Al Ghais's October 12 remarks](https://www.reuters.com/business/energy/opec-cuts-2026-oil-demand-growth-forecast-400000-bpd-sees-pent-up-demand-2027-2026-10-12/)
 - [Reuters: Oil market and supply risks, October 12, 2026](https://www.reuters.com/business/energy/oil-climbs-mideast-conflict-tanker-attacks-persist-2026-10-11/)
