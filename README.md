@@ -50,8 +50,8 @@ description: A short summary for listings and metadata.
 publishedAt: 2026-10-11
 tags:
   - technology
-  - 'AI Research'
-  - '医療・科学'
+  - "AI Research"
+  - "医療・科学"
 ```
 
 Article authors (including writing agents) choose any nonempty tag strings;
