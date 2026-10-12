@@ -11,7 +11,13 @@ interface Props {
   authoringModel?: string;
 }
 
-const { title, description, noindex = false, authoringTool, authoringModel } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  authoringTool,
+  authoringModel,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const tags = getTags(await getCollection('articles'));
 ---
