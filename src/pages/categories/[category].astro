@@ -16,7 +16,7 @@ export const getStaticPaths = (async () => {
     props: {
       category,
       articles: articles.filter(
-        (article) => article.data.category === category,
+        (article) => article.data.tags.includes(category),
       ),
     },
   }));
