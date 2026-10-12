@@ -25,16 +25,8 @@ pnpm run lint:fix
 pnpm audit --fix=override
 
 # Markdown
-npx -y prettier --write '**/*.md'
-if [[ -f .markdownlint-cli2.jsonc ]]; then
-  git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t npx -y markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
-else
-  (
-    trap 'rm -f .markdownlint-cli2.jsonc' EXIT
-    printf '%s\n' '{"config":{"MD013":false,"MD033":false,"MD041":false}}' > .markdownlint-cli2.jsonc
-    git ls-files -z -- '*.md' '*.mdx' | xargs -0 -t npx -y markdownlint-cli2 --fix --config .markdownlint-cli2.jsonc
-  )
-fi
+pnpm exec prettier --write '**/*.md'
+pnpm run lint:markdown -- --fix
 
 # GitHub Actions
 uvx zizmor --fix=safe .github/workflows

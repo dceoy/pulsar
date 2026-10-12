@@ -1,5 +1,5 @@
 ---
-title: 'Sample: Reading an AI research announcement'
+title: "Sample: Reading an AI research announcement"
 description: A sample reading guide for separating a research result from claims about its everyday use.
 publishedAt: 2026-10-10
 category: ai

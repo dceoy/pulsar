@@ -14,24 +14,25 @@
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "pnpm build && wrangler deploy",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "format": "biome format --write . && prettier --write \"**/*.{md,mdx}\"",
+    "format:check": "biome format . && prettier --check \"**/*.{md,mdx}\"",
+    "lint": "oxlint . --deny-warnings && biome lint .",
+    "lint:fix": "oxlint . --fix && biome lint --write .",
+    "lint:markdown": "node scripts/markdownlint.mjs",
+    "test:markdownlint": "node --test scripts/markdownlint.test.mjs"
   },
   "dependencies": {
-    "astro": "7.3.5",
-    "@astrojs/markdown-remark": "7.3.1"
+    "@astrojs/markdown-remark": "7.3.1",
+    "astro": "7.3.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "@eslint/js": "10.0.1",
-    "eslint": "10.12.0",
-    "eslint-plugin-astro": "3.2.1",
+    "@biomejs/biome": "2.5.14",
+    "katex": "0.18.2",
+    "markdownlint": "0.41.1",
+    "oxlint": "1.79.0",
     "prettier": "3.9.9",
-    "prettier-plugin-astro": "1.1.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.0",
     "wrangler": "4.147.0"
   }
 }

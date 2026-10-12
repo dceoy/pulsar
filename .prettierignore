@@ -2,10 +2,3 @@ node_modules/
 dist/
 .astro/
 .wrangler/
-pnpm-lock.yaml
-.agents/
-.github/CODEOWNERS
-.github/FUNDING.yml
-.github/dependabot.yml
-.github/renovate.json
-.github/workflows/claude.yml

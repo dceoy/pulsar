@@ -1,5 +1,5 @@
 ---
-title: 'Sample: A closer look at science news'
+title: "Sample: A closer look at science news"
 description: A sample guide to checking study design, uncertainty, and the source behind a science headline.
 publishedAt: 2026-10-09
 category: science

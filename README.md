@@ -29,10 +29,13 @@ pnpm build
 pnpm preview
 ```
 
-`pnpm check` validates TypeScript and Astro templates. `pnpm build` writes the
-homepage, articles, categories, `404.html`, and CSS to `dist/`. `pnpm preview`
-serves the built site locally. Generated output, dependencies, and local secrets
-are ignored by Git.
+`pnpm format:check` uses Biome for supported files, including Astro frontmatter,
+and Prettier only for Markdown (`.md` and `.mdx`).
+Full Astro template formatting is experimental and remains disabled.
+`pnpm lint` uses Oxlint for JS/TS and Biome lint for other supported files.
+`pnpm check` validates TypeScript and Astro templates. `pnpm build` writes
+static pages and CSS to `dist/`, and `pnpm preview` serves the site locally.
+Generated output, dependencies, and local secrets are ignored by Git.
 
 ## Content and canonical URLs
 
@@ -120,6 +123,6 @@ the local `pnpm deploy` command. A future separate deployment job should receive
 deployment step.
 
 Repository-wide local QA is available as
-`bash .agents/skills/local-qa/scripts/qa.sh`; it also needs npm/npx, uv/uvx, and
+`bash .agents/skills/local-qa/scripts/qa.sh`; it also needs pnpm, uv/uvx, and
 actionlint installed. It formats files, fixes lint issues, audits dependencies,
 and scans GitHub Actions configuration. Review its changes before committing.
