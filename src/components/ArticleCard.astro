@@ -11,7 +11,8 @@ const { title, description, category, publishedAt } = article.data;
 
 <article class="article-card">
   <p class="eyebrow">
-    {categoryLabels[category]} <span aria-hidden="true">/</span>{' '}
+    {categoryLabels[category]}
+    <span class="eyebrow-sep" aria-hidden="true">·</span>
     <time datetime={publishedAt.toISOString()}>
       {publishedAt.toLocaleDateString('en', {
         dateStyle: 'medium',
