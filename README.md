@@ -29,14 +29,12 @@ pnpm build
 pnpm preview
 ```
 
-`pnpm format:check` uses Biome for JS/TS, JSON, CSS, and Astro frontmatter.
-Full Astro template formatting is still experimental in Biome and is not enabled.
-`pnpm lint` runs Oxlint for JavaScript/TypeScript and Biome lint for
-supported files, including Astro frontmatter. Neither Prettier nor ESLint is
-required. `pnpm check` validates TypeScript and Astro templates, while `pnpm
-build` writes the homepage, articles, categories, `404.html`, and CSS to `dist/`. `pnpm preview`
-serves the built site locally. Generated output, dependencies, and local secrets
-are ignored by Git.
+`pnpm format:check` uses Biome for supported files, including Astro frontmatter.
+Full Astro template formatting is experimental and remains disabled.
+`pnpm lint` uses Oxlint for JS/TS and Biome lint for other supported files.
+`pnpm check` validates TypeScript and Astro templates. `pnpm build` writes
+static pages and CSS to `dist/`, and `pnpm preview` serves the site locally.
+Generated output, dependencies, and local secrets are ignored by Git.
 
 ## Content and canonical URLs
 
