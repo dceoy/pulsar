@@ -5,7 +5,7 @@ publishedAt: 2026-10-10
 tags:
   - ai
   - technology
-  - AI Research
+  - ai-research
 ---
 
 This is sample content for the Pulsar scaffold, not a report of a current event.

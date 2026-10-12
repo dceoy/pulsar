@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getTags, tagSlug } from '../../lib/tags';
+import { getTags } from '../../lib/tags';
 
 export const getStaticPaths = (async () => {
   const articles = (await getCollection('articles')).sort(
@@ -12,7 +12,7 @@ export const getStaticPaths = (async () => {
       a.id.localeCompare(b.id),
   );
   return getTags(articles).map((tag) => ({
-    params: { category: tagSlug(tag) },
+    params: { category: tag },
     props: {
       tag,
       articles: articles.filter((article) => article.data.tags.includes(tag)),

@@ -6,14 +6,6 @@ export function getTags(articles: CollectionEntry<'articles'>[]): string[] {
   );
 }
 
-export function tagSlug(tag: string): string {
-  return /^[a-z0-9-]+$/.test(tag)
-    ? tag
-    : `~${Array.from(tag, (char) =>
-        char.charCodeAt(0).toString(16).padStart(2, '0'),
-      ).join('')}`;
-}
-
 export function tagHref(tag: string): string {
-  return `/categories/${tagSlug(tag)}/`;
+  return `/categories/${tag}/`;
 }
