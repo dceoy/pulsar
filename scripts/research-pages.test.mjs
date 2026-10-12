@@ -22,8 +22,10 @@ test('each research run has one complete static page and timestamped stories', a
       /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/,
       `${name} needs a quoted, timezone-aware publication timestamp`,
     );
+    const aiAgent = raw.match(/^aiAgent: (.+)$/m)?.[1];
+    const aiModel = raw.match(/^aiModel: (.+)$/m)?.[1];
     const items = reports.get(researchId) ?? [];
-    items.push({ id: name.slice(0, -3), publishedAt });
+    items.push({ id: name.slice(0, -3), publishedAt, aiAgent, aiModel });
     reports.set(researchId, items);
   }
 
@@ -64,6 +66,25 @@ test('each research run has one complete static page and timestamped stories', a
         ),
         `Research ${id} is missing the exact posting time for ${story.id}`,
       );
+      for (const [field, value] of [
+        ['ai-agent', story.aiAgent],
+        ['ai-model', story.aiModel],
+      ]) {
+        if (value) {
+          assert.ok(
+            report.includes(`data-${field}="${value}"`),
+            `Research ${id} is missing ${field} for ${story.id}`,
+          );
+          const articlePage = await readFile(
+            join('dist/articles', story.id, 'index.html'),
+            'utf8',
+          );
+          assert.ok(
+            articlePage.includes(`name="pulsar:${field}" content="${value}"`),
+            `Article ${story.id} lacks ${field} metadata`,
+          );
+        }
+      }
       if (id === newest) {
         assert.ok(
           home.includes(`id="${story.id}"`),

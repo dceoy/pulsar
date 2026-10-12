@@ -1,0 +1,17 @@
+---
+interface Props {
+  aiAgent?: string;
+  aiModel?: string;
+}
+
+const { aiAgent, aiModel } = Astro.props;
+---
+
+{(aiAgent || aiModel) && (
+  <p class="ai-provenance">
+    AI provenance:
+    {aiAgent && <span> Agent: {aiAgent}</span>}
+    {aiAgent && aiModel && <span aria-hidden="true"> · </span>}
+    {aiModel && <span>Model: {aiModel}</span>}
+  </p>
+)}

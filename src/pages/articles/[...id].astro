@@ -4,6 +4,7 @@ import type { GetStaticPaths } from 'astro';
 import { tagHref } from '../../lib/tags';
 import { formatPublishedAt } from '../../lib/research';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleProvenance from '../../components/ArticleProvenance.astro';
 
 export const getStaticPaths = (async () =>
   (await getCollection('articles')).map((article) => ({
@@ -12,11 +13,16 @@ export const getStaticPaths = (async () =>
   }))) satisfies GetStaticPaths;
 const { article } = Astro.props;
 const { Content } = await render(article);
-const { title, description, tags, publishedAt } = article.data;
+const { title, description, tags, publishedAt, aiAgent, aiModel } = article.data;
 ---
 
-<BaseLayout title={title} description={description}>
-  <article class="reading">
+<BaseLayout
+  title={title}
+  description={description}
+  aiAgent={aiAgent}
+  aiModel={aiModel}
+>
+  <article class="reading" data-ai-agent={aiAgent} data-ai-model={aiModel}>
     <header class="hero compact">
       <p class="eyebrow">
         {tags.map((tag) => (
@@ -31,6 +37,7 @@ const { title, description, tags, publishedAt } = article.data;
       </p>
       <h1>{title}</h1>
       <p class="lede">{description}</p>
+      <ArticleProvenance aiAgent={aiAgent} aiModel={aiModel} />
     </header>
     <div class="prose">
       <Content />

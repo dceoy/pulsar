@@ -42,6 +42,14 @@ without following links to individual stories.
   list of distinct lowercase kebab-case values matching
   `^[a-z0-9]+(?:-[a-z0-9]+)*$`. Choose tags freely for each article;
   do not rely on a fixed list. Omit unnecessary YAML quotes.
+- Record AI provenance in optional `aiAgent` (the writing interface or agent,
+  e.g. `ChatGPT`) and `aiModel` (the exact model label reported by the tool,
+  e.g. `GPT-6-high`) fields. Include each field only when independently known
+  from the actual writing environment. Do not infer an exact model from the
+  chat client, user subscription, or product name; do not invent metadata to
+  fill a missing value. Preserve the reported model/effort label verbatim.
+  The site presents the provenance as visible text for notebook readers and
+  exposes article-level HTML data attributes and per-article head metadata.
 - The platform aggregates every article with the same `researchId` into
   one complete, server-rendered HTML report at `/research/<researchId>/`.
   The newest report also appears in full at `/`. Verify all stories and
@@ -64,7 +72,8 @@ without following links to individual stories.
 
 1. Check required frontmatter, research run grouping, valid and unique tags,
    **actual timezone-aware publication timestamps**, Markdown links,
-   attribution, and whether the article duplicates or contradicts existing
+   attribution, accurately declared AI provenance (if known), and whether
+   the article duplicates or contradicts existing
    content.
 2. Run the repository's `local-qa` skill when tooling is available; at minimum
    verify `pnpm format:check`, `pnpm lint:markdown`, `pnpm check`, and

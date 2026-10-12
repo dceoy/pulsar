@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content';
+import ArticleProvenance from './ArticleProvenance.astro';
 import type { ResearchReport } from '../lib/research';
 import { formatPublishedAt } from '../lib/research';
 import { tagHref } from '../lib/tags';
@@ -37,7 +38,12 @@ const rendered = await Promise.all(
     </p>
   </header>
   {rendered.map(({ article, Content }) => (
-    <article id={article.id} class="reading research-item">
+    <article
+      id={article.id}
+      class="reading research-item"
+      data-ai-agent={article.data.aiAgent}
+      data-ai-model={article.data.aiModel}
+    >
       <header class="research-item-heading">
         <p class="eyebrow">
           <span>Published</span>
@@ -50,6 +56,10 @@ const rendered = await Promise.all(
         </p>
         <h2>{article.data.title}</h2>
         <p class="lede">{article.data.description}</p>
+        <ArticleProvenance
+          aiAgent={article.data.aiAgent}
+          aiModel={article.data.aiModel}
+        />
       </header>
       <div class="prose">
         <Content />

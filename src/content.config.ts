@@ -14,6 +14,9 @@ const articles = defineCollection({
     researchId: z
       .string()
       .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use a kebab-case research ID'),
+    // Optional provenance; never infer agent or model from the publication workflow.
+    aiAgent: z.string().trim().min(1).optional(),
+    aiModel: z.string().trim().min(1).optional(),
     tags: z
       .array(
         z

@@ -7,9 +7,11 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  aiAgent?: string;
+  aiModel?: string;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, aiAgent, aiModel } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const tags = getTags(await getCollection('articles'));
 ---
@@ -23,6 +25,8 @@ const tags = getTags(await getCollection('articles'));
     <meta name="theme-color" content="#07090e" />
     <title>{title} | Pulsar</title>
     <meta name="description" content={description} />
+    {aiAgent && <meta name="pulsar:ai-agent" content={aiAgent} />}
+    {aiModel && <meta name="pulsar:ai-model" content={aiModel} />}
     {noindex ? (
       <meta name="robots" content="noindex" />
     ) : (

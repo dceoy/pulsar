@@ -50,11 +50,23 @@ title: A descriptive article title
 description: A short summary for listings and metadata.
 publishedAt: "2026-10-12T15:07:08Z"
 researchId: 2026-10-12-news
+aiAgent: ChatGPT
+aiModel: GPT-6-high
 tags:
   - technology
   - ai-research
   - clinical-research
 ```
+
+The `aiAgent` and `aiModel` example values above are illustrative, not
+claims about existing articles. Both are optional free-text fields: `aiAgent`
+records the writing assistant/tool; `aiModel` records its reported model
+identifier or full model/effort label. Only record verified provenance; never
+infer it for earlier articles. When present, provenance appears in article text,
+per-article HTML `data-ai-agent`/`data-ai-model` attributes on full research
+reports and article pages, and `pulsar:ai-agent`/`pulsar:ai-model` meta tags
+on individual article pages. Visible text is intentional: AI notebook readers
+may ignore head metadata or follow no links.
 
 Every publication must specify a real ISO 8601 timestamp including time and
 explicit UTC offset or `Z`, quoted in YAML to prevent automatic date coercion.
