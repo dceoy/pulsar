@@ -5,7 +5,9 @@ import test from 'node:test';
 
 test('every article has traceable in-text citations and a Sources section', async () => {
   const directory = 'src/content/articles';
-  const files = (await readdir(directory)).filter((name) => name.endsWith('.md'));
+  const files = (await readdir(directory)).filter((name) =>
+    name.endsWith('.md'),
+  );
 
   for (const filename of files) {
     const markdown = await readFile(join(directory, filename), 'utf8');
