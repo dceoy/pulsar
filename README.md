@@ -107,6 +107,12 @@ canonical and Open Graph URLs at build time. The 404 page is marked `noindex`.
 
 ## Agent-assisted article writing
 
+The standing research topics, selection priorities, and exclusions are defined
+in [`RESEARCH.md`](RESEARCH.md). The `write-article` skill must read that policy
+before choosing topics. Run-specific requests may add or change coverage for a
+single run, but do not override the evidence and verification standards. Edit
+`RESEARCH.md` to change the standing agenda; article tags remain freely chosen.
+
 Use the `write-article` skill to research, draft, attribute, and validate
 English Markdown articles: `.agents/skills/write-article/SKILL.md`.
 When supported by the agent, invoke `/write-article`. The
