@@ -1,7 +1,7 @@
 # Research scope and editorial priorities
 
 This document defines **what Pulsar researches**. The
-[`write-article` skill](.agents/skills/write-article/SKILL.md) defines **how
+[`research-and-write` skill](.agents/skills/research-and-write/SKILL.md) defines **how
 research is verified, written, and published**. Review this policy before each
 research run; do not infer a fixed topic list from article tags.
 
@@ -33,7 +33,7 @@ from every area in each run.
    restatement, preliminary claim, or already-covered story.
 4. Favor original studies, official data and documents, and independently
    corroborated reporting. Apply the evidence and attribution requirements
-   in the `write-article` skill.
+   in the `research-and-write` skill.
 5. Publish only what can be supported accurately. If nothing clears that bar,
    report the absence of a publishable finding; do not manufacture coverage.
 

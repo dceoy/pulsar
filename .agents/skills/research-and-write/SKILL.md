@@ -1,9 +1,9 @@
 ---
-name: write-article
-description: Research, write, revise, and fact-check English articles for Pulsar. Use when asked to publish news, research summaries, or analysis under src/content/articles/.
+name: research-and-write
+description: Research, fact-check, analyze, and write evidence-based articles for Pulsar.
 ---
 
-# Write a Pulsar article
+# Research and write Pulsar articles
 
 Create self-contained, evidence-based English coverage. **Every research run
 must be readable in full at one URL** so an AI notebook can ingest its content
