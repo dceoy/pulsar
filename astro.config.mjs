@@ -1,4 +1,6 @@
 import { defineConfig } from 'astro/config';
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import { namespaceArticleHeadings } from './src/lib/namespace-article-headings.mjs';
 import { URL } from 'node:url';
 
 const site = new URL(process.env.SITE_URL || 'https://example.com');
@@ -18,6 +20,7 @@ if (
 export default defineConfig({
   site: site.origin,
   output: 'static',
+  markdown: { rehypePlugins: [rehypeHeadingIds, namespaceArticleHeadings] },
   trailingSlash: 'always',
   build: { format: 'directory' },
 });

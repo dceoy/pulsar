@@ -5,19 +5,23 @@ description: Research, write, revise, and fact-check English articles for Pulsar
 
 # Write a Pulsar article
 
-Create a self-contained, evidence-based English article that can be read directly
-on the site or used as source material by an AI notebook.
+Create self-contained, evidence-based English coverage. **Every research run
+must be readable in full at one URL** so an AI notebook can ingest its content
+without following links to individual stories.
 
 ## Prepare
 
 1. Read `src/content.config.ts`, the content conventions in `README.md`, and
    existing articles. Follow the current schema if it differs from this skill.
-2. Identify one clear news event, research finding, or analytical question.
-   Avoid duplicating an existing article; update an existing one when appropriate.
-3. Research the subject using accessible, verifiable sources. Prefer original
+2. Assign one unique lowercase kebab-case `researchId` for this research run.
+   Reuse the same ID for every story researched in this run; never split a
+   single run across IDs or reuse an ID for a later run.
+3. Identify the news events, research findings, or analytical questions to cover.
+   Avoid duplicating existing coverage; update an existing story when appropriate.
+4. Research the subject using accessible, verifiable sources. Prefer original
    papers, official releases, regulatory filings, and direct announcements;
    corroborate consequential or disputed claims with independent reporting.
-4. Check event dates and source publication dates separately. Do not confuse a
+5. Check event dates and source publication dates separately. Do not confuse a
    publication date with when an event occurred. Do not invent citations,
    quotations, figures, URLs, findings, or claims of verification. If the
    evidence cannot be checked, flag the limitation instead of reporting
@@ -29,11 +33,28 @@ on the site or used as source material by an AI notebook.
   descriptive, lowercase kebab-case filename; the filename determines the URL
   `/articles/<slug>/`.
 - Use YAML frontmatter with `title` (specific and informative),
-  `description` (brief standalone summary), and `publishedAt` (the article's
-  publication date in `YYYY-MM-DD` format). Set `tags` to a short, relevant
+  `description` (brief standalone summary), `researchId` (shared across all
+  stories in this run), and `publishedAt` (the actual publication timestamp
+  with hours, minutes, seconds, and explicit timezone, e.g.
+  `'2026-10-13T00:07:08+09:00'`). **Quote the timestamp in YAML** so it remains
+  a string for strict schema validation. Never use a date-only value, assume
+  midnight, or invent a publication time. Set `tags` to a short, relevant
   list of distinct lowercase kebab-case values matching
   `^[a-z0-9]+(?:-[a-z0-9]+)*$`. Choose tags freely for each article;
   do not rely on a fixed list. Omit unnecessary YAML quotes.
+- Use the optional `author` field for a factual byline. For AI-authored work,
+  format the byline as `<tool> (<model>)` when both the writing application or
+  agent and the exact reported model label are known, e.g.
+  `author: ChatGPT (GPT-6-high)`. If only the authoring tool is verified,
+  specify just its name. Never infer
+  a model or effort level from a chat client or subscription; if the agent,
+  model, or authorship cannot be verified, omit unsupported attribution rather
+  than inventing it. The site renders the byline as visible text for AI
+  notebook readers and as standard HTML author metadata on article pages.
+- The platform aggregates every article with the same `researchId` into
+  one complete, server-rendered HTML report at `/research/<researchId>/`.
+  The newest report also appears in full at `/`. Verify all stories and
+  their sources are actually present in that HTML, not just linked previews.
 - Write in English only. Lead with what happened or was found, when it happened,
   and why it matters. Use descriptive headings and short, factual paragraphs.
 - Explain the key evidence and its limitations, including study design or
@@ -50,11 +71,13 @@ on the site or used as source material by an AI notebook.
 
 ## Validate
 
-1. Check required frontmatter, valid and unique tags, dates, Markdown links,
-   attribution, and whether the article duplicates or contradicts existing
+1. Check required frontmatter, research run grouping, valid and unique tags,
+   **actual timezone-aware publication timestamps**, Markdown links,
+   attribution, accurate author information (if known), and whether
+   the article duplicates or contradicts existing
    content.
 2. Run the repository's `local-qa` skill when tooling is available; at minimum
    verify `pnpm format:check`, `pnpm lint:markdown`, `pnpm check`, and
-   `pnpm build`. Review any automated edits.
+   `pnpm build`, and `pnpm test:research`. Review any automated edits.
 3. Report the article path, principal sources, and any verification or tooling
    limitations. Do not claim that checks ran unless they did.

@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import ResearchBrief from '../../components/ResearchBrief.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getResearchReports } from '../../lib/research';
+
+export const getStaticPaths = (async () =>
+  getResearchReports(await getCollection('articles')).map((report) => ({
+    params: { id: report.id },
+    props: { report },
+  }))) satisfies GetStaticPaths;
+
+const { report } = Astro.props;
+---
+
+<BaseLayout
+  title={`Research: ${report.id}`}
+  description={`Complete reporting and sources from the ${report.id} research run.`}
+>
+  <ResearchBrief report={report} />
+  <p class="article-back">
+    <a href="/">Back to latest research ↗</a>
+  </p>
+</BaseLayout>

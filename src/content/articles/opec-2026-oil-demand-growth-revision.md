@@ -1,7 +1,8 @@
 ---
 title: OPEC chief reiterates 2026 oil demand growth outlook near 400000 barrels per day
 description: The October 12 statement rounded a September forecast of 380000 barrels per day and anticipated a 2027 rebound; it was not a fresh downgrade.
-publishedAt: 2026-10-12
+publishedAt: "2026-10-12T15:07:08Z"
+researchId: 2026-10-12-news
 tags:
   - energy
   - oil-markets

@@ -7,9 +7,10 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  author?: string;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, author } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const tags = getTags(await getCollection('articles'));
 ---
@@ -23,6 +24,7 @@ const tags = getTags(await getCollection('articles'));
     <meta name="theme-color" content="#07090e" />
     <title>{title} | Pulsar</title>
     <meta name="description" content={description} />
+    {author && <meta name="author" content={author} />}
     {noindex ? (
       <meta name="robots" content="noindex" />
     ) : (
