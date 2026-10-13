@@ -12,7 +12,7 @@ tags:
 ---
 
 A **Nature Medicine** study published on **October 12, 2026**, and
-highlighted in a **October 13** research release, reports a broad
+highlighted in an **October 13** research release, reports a broad
 population-level change in laboratory trajectories around the
 **final menstrual period (FMP)**. Using a computational approach to
 align test patterns when individual FMP dates are often missing,
