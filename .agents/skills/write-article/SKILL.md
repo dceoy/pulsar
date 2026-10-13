@@ -11,17 +11,25 @@ without following links to individual stories.
 
 ## Prepare
 
-1. Read `src/content.config.ts`, the content conventions in `README.md`, and
+1. Read the standing research scope, topic priorities, and exclusions in
+   `RESEARCH.md` **before selecting topics**. Treat it as the source of truth
+   for editorial scope. If it is missing or inaccessible, report the blocker
+   instead of guessing a research agenda.
+2. Read `src/content.config.ts`, the content conventions in `README.md`, and
    existing articles. Follow the current schema if it differs from this skill.
-2. Assign one unique lowercase kebab-case `researchId` for this research run.
+3. Assign one unique lowercase kebab-case `researchId` for this research run.
    Reuse the same ID for every story researched in this run; never split a
    single run across IDs or reuse an ID for a later run.
-3. Identify the news events, research findings, or analytical questions to cover.
-   Avoid duplicating existing coverage; update an existing story when appropriate.
-4. Research the subject using accessible, verifiable sources. Prefer original
+4. Select news events, research findings, or analytical questions according to
+   `RESEARCH.md`. Apply explicit run-specific topic instructions as temporary
+   additions or changes to scope; they do not waive source verification or
+   other editorial safeguards. Avoid duplicating existing coverage; update an
+   existing story when appropriate. If no topic meets the evidence and
+   significance thresholds, report that instead of publishing filler.
+5. Research the subject using accessible, verifiable sources. Prefer original
    papers, official releases, regulatory filings, and direct announcements;
    corroborate consequential or disputed claims with independent reporting.
-5. Check event dates and source publication dates separately. Do not confuse a
+6. Check event dates and source publication dates separately. Do not confuse a
    publication date with when an event occurred. Do not invent citations,
    quotations, figures, URLs, findings, or claims of verification. If the
    evidence cannot be checked, flag the limitation instead of reporting
@@ -71,7 +79,8 @@ without following links to individual stories.
 
 ## Validate
 
-1. Check required frontmatter, research run grouping, valid and unique tags,
+1. Check topic selection against `RESEARCH.md` and any explicit run-specific
+   instructions. Check required frontmatter, research run grouping, valid and unique tags,
    **actual timezone-aware publication timestamps**, Markdown links,
    attribution, accurate author information (if known), and whether
    the article duplicates or contradicts existing
