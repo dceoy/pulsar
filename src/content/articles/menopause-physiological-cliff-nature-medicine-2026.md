@@ -22,7 +22,7 @@ a physiological "cliff." This is a methodological and observational
 finding, **not proof that every person experiences a sudden clinical
 deterioration at menopause**.
 See the [peer-reviewed original article](https://www.nature.com/articles/s41591-026-04614-0)
-and [Nature's October 13 research highlight](https://www.natureasia.com/ja-jp/nm/pr-highlights/15645).
+and [Nature's October 13 research highlight](https://www.natureasia.com/en/info/press-releases/detail/9458).
 
 ## How the researchers reconstructed menopause timing
 
@@ -106,5 +106,5 @@ patient decisions.
 ## Sources
 
 - [Pridham and colleagues, Nature Medicine, published October 12, 2026](https://www.nature.com/articles/s41591-026-04614-0)
-- [Nature Portfolio: research highlight, October 13, 2026](https://www.natureasia.com/ja-jp/nm/pr-highlights/15645)
+- [Nature Portfolio: research highlight, October 13, 2026](https://www.natureasia.com/en/info/press-releases/detail/9458)
 - [Authors' analysis code and shared materials: YoGlen](https://github.com/AlonLabWIS/YoGlen)
