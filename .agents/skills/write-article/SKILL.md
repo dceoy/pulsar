@@ -35,6 +35,44 @@ without following links to individual stories.
    evidence cannot be checked, flag the limitation instead of reporting
    speculation as fact.
 
+## Evidence and critical appraisal protocol
+
+1. For each consequential claim (numbers, findings, effectiveness, safety,
+   forecasts, policy changes, or product capabilities), identify the supporting
+   source and the **specific passage, table, figure, or dataset** that supports
+   it. Check the claim against that material, not merely the source title or
+   abstract. Recheck the final wording after editing. Keep a claim-to-evidence
+   checklist during the run; do not describe an unread or inaccessible source
+   as independently verified.
+2. Prefer stable, version-specific primary references: original research papers
+   (DOI or publisher permalink), official reports or datasets, regulatory
+   filings, trial registries, and dated first-party statements. Avoid generic
+   report indexes when a specific edition is available. Confirm source and
+   event dates, units, denominators, comparison baselines, and subsequent
+   updates. Check corrections or retractions for research when practicable.
+3. Seek independent corroboration for disputed, surprising, high-impact, or
+   self-interested claims. Independently reported repetition of a press release
+   is **not** independent corroboration. Actively look for material
+   counterevidence or conflicting findings; address discrepancies rather than
+   selecting only supporting sources. Do not impose an arbitrary source count.
+4. For empirical studies, critically appraise the study design, population and
+   setting, sample size, comparison group, outcomes, effect sizes and
+   uncertainty estimates **when reported**, plus relevant confounding, missing
+   data, selection bias, multiple testing, sensitivity analyses, and
+   generalizability. Distinguish association, prediction, and causal effects.
+   Consider replication, external validation, data/code access, funding, and
+   conflicts of interest. Apply the applicable checks; do not invent details
+   that the source does not report.
+5. Label preprints and unreviewed work explicitly. Treat company benchmarks,
+   projected performance, expert opinions, regulatory proposals, and economic
+   forecasts as attributed claims or scenarios, not established independent
+   outcomes. Explain uncertainty and missing methodology proportionately to
+   the decision impact.
+6. Record the research cutoff/check date for time-sensitive evidence in the
+   article, separately from the actual `publishedAt` timestamp. Where only an
+   abstract, secondary account, or inaccessible document can be checked,
+   disclose that restriction and avoid claims requiring the unseen material.
+
 ## Write
 
 - Create or update one file at `src/content/articles/<slug>.md`. Use a
@@ -68,25 +106,43 @@ without following links to individual stories.
 - Explain the key evidence and its limitations, including study design or
   sample size for research, and uncertainty for evolving news. Distinguish
   verified facts, attributed claims, and your own interpretation.
-- Link substantive claims to accessible source URLs near the relevant text.
-  Finish with a compact `## Sources` section linking the most important
-  original material. Use informative link labels; do not include fabricated
-  or unvisited references.
+- Link substantive claims to the **specific, directly supporting** source
+  near the statement; do not cite unrelated passages or imply that a secondary
+  citation is a direct reading of the primary work. Finish with a compact
+  `## Sources` section linking the most important materials using stable,
+  specific URLs and informative labels. Do not include fabricated or unvisited
+  references. Separate sourced findings from interpretation, and disclose
+  evidence gaps affecting the conclusions.
 - Keep the article useful without relying on a reader to open the sources:
   provide essential context, concrete details, and meaningful implications.
   Avoid filler, sensationalism, unsupported predictions, and repetitive
   summaries. Clearly label opinion or forward-looking analysis.
 
+## Publication gate
+
+Do not publish an article with a material claim unsupported by the evidence
+actually inspected, an invented or misleading citation, a known unaddressed
+contradiction, or causal/clinical/financial recommendations beyond the study's
+support. Omit the claim, qualify it as an explicitly attributed and unverified
+statement when appropriate, or decline publication. A syntactically valid link
+or a passing automated test **does not establish factual correctness**.
+
 ## Validate
 
-1. Check topic selection against `RESEARCH.md` and any explicit run-specific
-   instructions. Check required frontmatter, research run grouping, valid and unique tags,
-   **actual timezone-aware publication timestamps**, Markdown links,
-   attribution, accurate author information (if known), and whether
-   the article duplicates or contradicts existing
-   content.
-2. Run the repository's `local-qa` skill when tooling is available; at minimum
-   verify `pnpm format:check`, `pnpm lint:markdown`, `pnpm check`, and
-   `pnpm build`, and `pnpm test:research`. Review any automated edits.
-3. Report the article path, principal sources, and any verification or tooling
-   limitations. Do not claim that checks ran unless they did.
+1. Check topic selection against `RESEARCH.md` and run-specific instructions;
+   verify required metadata, research grouping, unique tags, accurate author
+   attribution, actual timezone-aware publication time, duplication, and
+   consistency with existing reporting.
+2. Recheck every consequential claim against its original source location.
+   Verify quotations, figures, units, denominators, comparative baselines,
+   study design, and distinctions between evidence and interpretation. Resolve
+   or explicitly disclose counterevidence and material uncertainty. Check
+   whether references are accessible and genuinely support the adjacent text.
+3. Run the repository's `local-qa` skill when tooling is available; at minimum
+   verify `pnpm format:check`, `pnpm lint:markdown`, `pnpm check`,
+   `pnpm build`, `pnpm test:research`, and `pnpm test:evidence`. Review
+   automated edits. The evidence test checks citation structure only, not the
+   truth of statements or the availability of external sites.
+4. Report the article path, principal primary sources, significant conflicting
+   evidence or verification limitations, and exact checks executed. Do not
+   claim sources were read or tests passed when they were not.
