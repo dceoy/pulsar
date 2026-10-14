@@ -20,6 +20,7 @@
     "lint:fix": "oxlint . --fix && biome lint --write .",
     "lint:markdown": "node scripts/markdownlint.mjs",
     "test:markdownlint": "node --test scripts/markdownlint.test.mjs",
+    "test:evidence": "node --test scripts/evidence.test.mjs",
     "test:research": "node --test scripts/research-pages.test.mjs"
   },
   "dependencies": {

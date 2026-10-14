@@ -26,6 +26,7 @@ pnpm format:check
 pnpm lint
 pnpm check
 pnpm build
+pnpm test:evidence
 pnpm test:research
 pnpm preview
 ```
@@ -107,9 +108,25 @@ canonical and Open Graph URLs at build time. The 404 page is marked `noindex`.
 
 ## Agent-assisted article writing
 
-Use the `write-article` skill to research, draft, attribute, and validate
-English Markdown articles: `.agents/skills/write-article/SKILL.md`.
-When supported by the agent, invoke `/write-article`. The
+The standing research topics, selection priorities, and exclusions are defined
+in [`RESEARCH.md`](RESEARCH.md). The `research-and-write` skill must read that policy
+before choosing topics. Run-specific requests may add or change coverage for a
+single run, but do not override the evidence and verification standards. Edit
+`RESEARCH.md` to change the standing agenda; article tags remain freely chosen.
+
+The `research-and-write` skill also requires each consequential claim to be checked
+against the specific source passage or data, research-specific appraisal of
+methods and uncertainty, and consideration of contradictory evidence. Authors
+must distinguish verified findings, attributed statements, and interpretation.
+`pnpm test:evidence` checks that each article has a Sources section and an
+in-text citation to a listed HTTPS source. This is a structural safeguard:
+it does **not** fetch external links, confirm their content, or certify factual
+accuracy. Scientific and editorial verification must still be performed by
+the author and reviewer before publishing.
+
+Use the `research-and-write` skill to research, draft, attribute, and validate
+English Markdown articles: `.agents/skills/research-and-write/SKILL.md`.
+When supported by the agent, invoke `/research-and-write`. The
 `.claude/skills` symlink points to `../.agents/skills`, sharing the same
 skill definitions without duplicating them. Claude Code runtime discovery
 through a symlinked skills root is version-dependent; verify the skill is
