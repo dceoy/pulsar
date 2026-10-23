@@ -1,3 +1,4 @@
+minimumReleaseAge: 1440
 # Keep the project dependency graph readable by single-document scanners.
 pmOnFail: ignore
 allowBuilds:
