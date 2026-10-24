@@ -6,7 +6,8 @@
   "license": "AGPL-3.0-only",
   "packageManager": "pnpm@12.10.1",
   "engines": {
-    "node": ">=24.16.0"
+    "node": ">=24.22.1",
+    "pnpm": ">=12"
   },
   "scripts": {
     "dev": "astro dev",
@@ -37,5 +38,12 @@
     "prettier": "3.9.10",
     "typescript": "6.0.3",
     "wrangler": "4.151.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=24.22.1",
+      "onFail": "download"
+    }
   }
 }
