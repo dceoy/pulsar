@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "check": "astro check",
+    "check": "astro sync && astro-check",
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "pnpm build && wrangler deploy",
