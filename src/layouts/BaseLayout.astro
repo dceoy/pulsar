@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
-  author?: string;
+  author?: string | undefined;
 }
 
 const { title, description, noindex = false, author } = Astro.props;

@@ -27,5 +27,17 @@
     "formatter": {
       "quoteStyle": "single"
     }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "correctness": {
+        "useQwikValidLexicalScope": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "error"
+      }
+    }
   }
 }

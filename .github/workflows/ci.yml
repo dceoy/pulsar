@@ -20,7 +20,7 @@ jobs:
       contents: read
     uses: dceoy/gha-for-devops/.github/workflows/typescript-package-script.yml@9e394d7c18b3a00fb853cd3c693cc4eeb5f0c825  # v2.3.0
     with:
-      package-scripts: format:check,lint,lint:markdown,test:markdownlint,check,build,test:evidence,test:research
+      package-scripts: format:check,lint,typecheck,lint:markdown,test:markdownlint,check,build,test:evidence,test:research
       package-path: .
       audit: true
   github-actions-lint-and-scan:

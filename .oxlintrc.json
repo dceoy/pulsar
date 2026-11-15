@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error"
+  },
+  "plugins": ["import", "oxc", "promise", "typescript", "unicorn"],
+  "options": {
+    "typeAware": true,
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error"
+  },
+  "rules": {
+    "unicorn/prefer-set-has": "off",
+    "eslint/no-await-in-loop": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-array-sort": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-unassigned-import": "off"
+  }
+}
