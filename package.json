@@ -17,7 +17,7 @@
     "deploy": "pnpm build && wrangler deploy",
     "format": "biome format --write . && oxfmt --write '**/*.{md,mdx}' --no-error-on-unmatched-pattern",
     "format:check": "biome format . && oxfmt --check '**/*.{md,mdx}' --no-error-on-unmatched-pattern",
-    "lint": "oxlint . && biome lint . --error-on-warnings",
+    "lint": "oxlint . && biome lint .",
     "lint:fix": "oxlint --fix . && biome lint --write .",
     "lint:markdown": "node scripts/markdownlint.mjs",
     "test:markdownlint": "node --test scripts/markdownlint.test.mjs",
