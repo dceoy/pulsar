@@ -7,17 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": [
-      "**",
-      "!!**/.agents",
-      "!!**/.github",
-      "!!**/.astro",
-      "!!**/.wrangler",
-      "!!**/dist",
-      "!!**/pnpm-lock.yaml",
-      "!!**/*.md",
-      "!!**/*.mdx"
-    ]
+    "includes": ["**","!!**/.agents","!!**/.github","!!**/.astro","!!**/.wrangler","!!**/dist","!!**/pnpm-lock.yaml","!!**/*.md","!!**/*.mdx"]
   },
   "formatter": {
     "indentStyle": "space",
@@ -26,6 +16,15 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "all",
+      "correctness": {
+        "useQwikValidLexicalScope": "off"
+      }
     }
   }
 }
