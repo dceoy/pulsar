@@ -31,12 +31,20 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "preset": "recommended",
+      "preset": "all",
       "correctness": {
         "useQwikValidLexicalScope": "off"
       },
       "suspicious": {
         "noExplicitAny": "error"
+      },
+      "style": {
+        "noDefaultExport": "off",
+        "noExcessiveLinesPerFile": "off",
+        "useExportsLast": "off"
+      },
+      "complexity": {
+        "useLiteralKeys": "off"
       }
     }
   }
