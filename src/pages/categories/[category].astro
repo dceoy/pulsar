@@ -6,16 +6,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getTags } from '../../lib/tags';
 
 export const getStaticPaths = (async () => {
-  const articles = (await getCollection('articles')).sort(
+  const allArticles = (await getCollection('articles')).sort(
     (a, b) =>
       b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf() ||
       a.id.localeCompare(b.id),
   );
-  return getTags(articles).map((tag) => ({
-    params: { category: tag },
+  return getTags(allArticles).map((category) => ({
+    params: { category },
     props: {
-      tag,
-      articles: articles.filter((article) => article.data.tags.includes(tag)),
+      tag: category,
+      articles: allArticles.filter((article) =>
+        article.data.tags.includes(category),
+      ),
     },
   }));
 }) satisfies GetStaticPaths;

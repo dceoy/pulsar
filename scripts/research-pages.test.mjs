@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
-import test from 'node:test';
+import it from 'node:test';
 
-test('each research run has one complete static page and timestamped stories', async () => {
+it('each research run has one complete static page and timestamped stories', async () => {
   const sourceDir = 'src/content/articles';
   const names = (await readdir(sourceDir)).filter((name) =>
     name.endsWith('.md'),
@@ -13,16 +13,16 @@ test('each research run has one complete static page and timestamped stories', a
   for (const name of names) {
     const raw = await readFile(join(sourceDir, name), 'utf8');
     const researchId = raw.match(
-      /^researchId: ([a-z0-9]+(?:-[a-z0-9]+)*)$/m,
+      /^researchId: ([a-z0-9]+(?:-[a-z0-9]+)*)$/mu,
     )?.[1];
-    const publishedAt = raw.match(/^publishedAt: ['"]([^'"]+)['"]$/m)?.[1];
+    const publishedAt = raw.match(/^publishedAt: ['"]([^'"]+)['"]$/mu)?.[1];
     assert.ok(researchId, `${name} needs a researchId`);
     assert.match(
       publishedAt ?? '',
-      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/,
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/u,
       `${name} needs a quoted, timezone-aware publication timestamp`,
     );
-    const author = raw.match(/^author: (.+)$/m)?.[1];
+    const author = raw.match(/^author: (.+)$/mu)?.[1];
     const items = reports.get(researchId) ?? [];
     items.push({
       id: name.slice(0, -3),
@@ -32,7 +32,9 @@ test('each research run has one complete static page and timestamped stories', a
     reports.set(researchId, items);
   }
 
-  if (reports.size === 0) return;
+  if (reports.size === 0) {
+    return;
+  }
 
   const newest = [...reports].sort(
     (a, b) =>
@@ -41,7 +43,7 @@ test('each research run has one complete static page and timestamped stories', a
   )[0][0];
   const home = await readFile('dist/index.html', 'utf8');
   function assertUniqueHeadingIds(html, page) {
-    const ids = [...html.matchAll(/<h[1-6][^>]*id="([^"]+)"/g)].map(
+    const ids = [...html.matchAll(/<h[1-6][^>]*id="([^"]+)"/gu)].map(
       (match) => match[1],
     );
     assert.equal(

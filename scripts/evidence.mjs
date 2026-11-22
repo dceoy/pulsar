@@ -6,12 +6,16 @@ import {
   parseFrontmatter,
 } from '@astrojs/markdown-remark';
 
+const HTTPS_URL = /^https:\/\/\S+$/u;
+
 function text(node) {
   return node.value ?? (node.children ?? []).map(text).join('');
 }
 
 function links(node) {
-  if (node.type === 'link') return [node.url];
+  if (node.type === 'link') {
+    return [node.url];
+  }
   return (node.children ?? []).flatMap(links);
 }
 
@@ -55,7 +59,7 @@ export async function validateEvidence(markdown, filename) {
         paragraph.children.length === 1 &&
         link.type === 'link' &&
         text(link).trim() &&
-        /^https:\/\/\S+$/.test(link.url),
+        HTTPS_URL.test(link.url),
       `${filename}: use a labeled, direct HTTPS Markdown link per source`,
     );
     return link.url;

@@ -6,9 +6,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getResearchReports } from '../../lib/research';
 
 export const getStaticPaths = (async () =>
-  getResearchReports(await getCollection('articles')).map((report) => ({
-    params: { id: report.id },
-    props: { report },
+  getResearchReports(await getCollection('articles')).map((item) => ({
+    params: { id: item.id },
+    props: { report: item },
   }))) satisfies GetStaticPaths;
 
 const { report } = Astro.props;
