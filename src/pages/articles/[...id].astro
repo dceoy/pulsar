@@ -7,9 +7,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleByline from '../../components/ArticleByline.astro';
 
 export const getStaticPaths = (async () =>
-  (await getCollection('articles')).map((article) => ({
-    params: { id: article.id },
-    props: { article },
+  (await getCollection('articles')).map((item) => ({
+    params: { id: item.id },
+    props: { article: item },
   }))) satisfies GetStaticPaths;
 const { article } = Astro.props;
 const { Content } = await render(article);

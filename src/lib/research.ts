@@ -25,7 +25,9 @@ export function getResearchReports(articles: Article[]): ResearchReport[] {
           a.id.localeCompare(b.id),
       );
       const first = items[0];
-      if (!first) throw new Error('Research group unexpectedly empty');
+      if (!first) {
+        throw new Error('Research group unexpectedly empty');
+      }
       return { id, publishedAt: first.data.publishedAt, articles: items };
     })
     .sort(

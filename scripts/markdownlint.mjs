@@ -5,6 +5,7 @@ import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
 import { applyFixes } from 'markdownlint';
 import { lint } from 'markdownlint/promise';
+import process from 'node:process';
 
 const execFileAsync = promisify(execFile);
 const config = {

@@ -1,9 +1,14 @@
+const ARTICLE_PATH = /\/articles\/([^/]+)\.md$/u;
+const HEADING_TAG = /^h[1-6]$/u;
+
 /** Give each article's Markdown headings unique IDs in combined research pages. */
 export function namespaceArticleHeadings() {
   return (tree, file) => {
     const source = String(file.path ?? '').replaceAll('\\', '/');
-    const match = source.match(/\/articles\/([^/]+)\.md$/);
-    if (!match) return;
+    const match = source.match(ARTICLE_PATH);
+    if (!match) {
+      return;
+    }
 
     const prefix = `${match[1]}-`;
     const headingIds = new Set();
@@ -11,7 +16,7 @@ export function namespaceArticleHeadings() {
     function visit(node) {
       if (node.type === 'element') {
         const id = node.properties?.id;
-        if (/^h[1-6]$/.test(node.tagName) && typeof id === 'string') {
+        if (HEADING_TAG.test(node.tagName) && typeof id === 'string') {
           headingIds.add(id);
           node.properties.id = `${prefix}${id}`;
         } else if (node.tagName === 'a') {

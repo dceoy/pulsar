@@ -13,7 +13,7 @@ const articles = defineCollection({
       .transform((value) => new Date(value)),
     researchId: z
       .string()
-      .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use a kebab-case research ID'),
+      .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/u, 'Use a kebab-case research ID'),
     // Optional byline; never invent an AI tool or model attribution.
     author: z.string().trim().min(1).optional(),
     tags: z
@@ -21,7 +21,7 @@ const articles = defineCollection({
         z
           .string()
           .regex(
-            /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+            /^[a-z0-9]+(?:-[a-z0-9]+)*$/u,
             'Tags must use lowercase kebab-case (a-z, 0-9, single hyphens)',
           ),
       )
