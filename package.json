@@ -26,21 +26,21 @@
     "typecheck": "astro sync && tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "7.3.8",
-    "astro": "7.4.11"
+    "@astrojs/markdown-remark": "7.3.9",
+    "astro": "7.4.12"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
-    "@biomejs/biome": "2.6.7",
+    "@biomejs/biome": "2.6.8",
     "katex": "0.19.1",
     "markdownlint": "0.42.1",
-    "markdownlint-cli2": "0.24.0",
+    "markdownlint-cli2": "0.24.1",
     "oxfmt": "0.78.0",
     "oxlint": "1.93.0",
     "oxlint-tsgolint": "7.0.2007",
     "prettier": "3.10.1",
-    "typescript": "6.0.3",
-    "wrangler": "4.161.0"
+    "typescript": "7.0.2",
+    "wrangler": "4.162.0"
   },
   "devEngines": {
     "runtime": {
